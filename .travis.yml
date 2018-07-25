@@ -15,7 +15,7 @@ after_script:
   - git config user.email "mengtanx@gmail.com"
   - git add .
   - git commit -m "Automatic Deployment - Update Docs"
-  - git push "https://${GitHub_Token}@${GitHub_Ref}" gh-pages
+  - git push "https://${GitHub_Token}@${GitHub_Ref}" gh-pages:gh-pages
 env:
  global:
    - GitHub_Ref: https://github.com/mengtanx/Momenta-Notes.git
