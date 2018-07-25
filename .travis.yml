@@ -12,10 +12,9 @@ after_script:
   - cp README.md site/
   - cd site
   - git init
-  - git checkout -b gh-pages
   - git add .
   - git -c user.name="mengtanx" -c user.email "mengtanx@gmail.com" -m "Automatic Deployment - Update Docs"
-  - git push -f -q "https://${GitHub_Token}@${GitHub_Ref}" gh-pages:gh-pages
+  - git push -f -q "https://${GitHub_Token}@${GitHub_Ref}" master:master
   - cd "$TRAVIS_BUILD_DIR"
 env:
  global:
