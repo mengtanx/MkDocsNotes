@@ -1,0 +1,46 @@
+# Project information
+site_name: 'Momenta Notes'
+site_description: "Momenta's Personal Notes"
+site_author: 'Momenta Liu'
+site_url: 'https://notes.mengtanx.com/'
+
+# Repository
+# repo_name: ''
+# repo_url: ''
+
+# Copyright
+# copyright: 'Momenta'
+
+# Configuration
+theme:
+  name: 'material'
+  language: 'zh'
+  # palette:
+  #   primary: 'indigo'
+  #   accent: 'indigo'
+  # font:
+  #   text: 'Roboto'
+  #   code: 'Roboto Mono'
+
+# Customization
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/mengtanx'
+    - type: 'twitter'
+      link: 'https://twitter.com/mengtanx'
+    - type: 'linkedin'
+      link: 'https://linkedin.com/in/mengtanx'
+
+# Google Analytics
+google_analytics:
+  - 'UA-121861821-2'
+  - 'auto'
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
