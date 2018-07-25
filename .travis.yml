@@ -13,10 +13,8 @@ after_script:
   - cd site
   - git init
   - git checkout -b gh-pages
-  - git config user.name "mengtanx"
-  - git config user.email "mengtanx@gmail.com"
   - git add .
-  - git commit -m "Automatic Deployment - Update Docs"
+  - git -c user.name="mengtanx" -c user.email "mengtanx@gmail.com" -m "Automatic Deployment - Update Docs"
   - git push -f -q "https://${GitHub_Token}@${GitHub_Ref}" gh-pages:gh-pages
   - cd "$TRAVIS_BUILD_DIR"
 env:
