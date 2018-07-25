@@ -1,0 +1,20 @@
+language: python
+python:
+  - "2.7"
+install:
+  - pip install mkdocs
+script:
+  - mkdocs build --clean
+after_script:
+  - cp CNAME site/
+  - cp README.md site/
+  - cd site
+  - git init
+  - git config user.name "mengtanx"
+  - git config user.email "mengtanx@gmail.com"
+  - git add .
+  - git commit -m "Automatic Deployment - Update Docs"
+  - git push "https://${GitHub_Token}@${GitHub_Ref}" gh-pages
+env:
+ global:
+   - GitHub_Ref: https://github.com/mengtanx/Momenta-Notes.git
