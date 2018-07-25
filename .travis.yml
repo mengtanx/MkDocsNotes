@@ -1,21 +1,26 @@
 language: python
 python:
-  - "3.5"
+  - "2.7"
 install:
   - pip install mkdocs
   - pip install mkdocs-material
 script:
   - mkdocs build --clean
 after_script:
-  - cp CNAME site/
-  - cp README.md site/
-  - cd site
-  - git init
-  - git config user.name "mengtanx"
-  - git config user.email "mengtanx@gmail.com"
-  - git add .
-  - git commit -m "Automatic Deployment - Update Docs"
-  - git push "https://${GitHub_Token}@${GitHub_Ref}" gh-pages:gh-pages
+  if [ -n "$GitHub_Token" ]; then
+    cd "$TRAVIS_BUILD_DIR"
+    cp CNAME site/
+    cp README.md site/
+    cd site
+    git init
+    git checkout -b gh-pages
+    git config user.name "mengtanx"
+    git config user.email "mengtanx@gmail.com"
+    git add .
+    git commit -m "Automatic Deployment - Update Docs"
+    git push -f -q "https://${GitHub_Token}@${GitHub_Ref}" gh-pages:gh-pages
+    cd "$TRAVIS_BUILD_DIR"
+  fi
 env:
  global:
    - GitHub_Ref: https://github.com/mengtanx/Momenta-Notes.git
