@@ -7,20 +7,18 @@ install:
 script:
   - mkdocs build --clean
 after_script:
-  if [ -n "$GitHub_Token" ]; then
-    cd "$TRAVIS_BUILD_DIR"
-    cp CNAME site/
-    cp README.md site/
-    cd site
-    git init
-    git checkout -b gh-pages
-    git config user.name "mengtanx"
-    git config user.email "mengtanx@gmail.com"
-    git add .
-    git commit -m "Automatic Deployment - Update Docs"
-    git push -f -q "https://${GitHub_Token}@${GitHub_Ref}" gh-pages:gh-pages
-    cd "$TRAVIS_BUILD_DIR"
-  fi
+  - cd "$TRAVIS_BUILD_DIR"
+  - cp CNAME site/
+  - cp README.md site/
+  - cd site
+  - git init
+  - git checkout -b gh-pages
+  - git config user.name "mengtanx"
+  - git config user.email "mengtanx@gmail.com"
+  - git add .
+  - git commit -m "Automatic Deployment - Update Docs"
+  - git push -f -q "https://${GitHub_Token}@${GitHub_Ref}" gh-pages:gh-pages
+  - cd "$TRAVIS_BUILD_DIR"
 env:
  global:
    - GitHub_Ref: https://github.com/mengtanx/Momenta-Notes.git
