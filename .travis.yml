@@ -17,8 +17,5 @@ after_script:
   - git init
   - git add .
   - git -c user.name="mengtanx" -c user.email="mengtanx@gmail.com" commit -m "Automatic Deployment - Update Docs"
-  - git push -f -q https://${GitHub_Name}:${GitHub_Token}@${GitHub_Ref}" master:master
+  - git push -f -q https://${GitHub_Name}:${GitHub_Token}@github.com/mengtanx/Momenta-Notes.git" master
   - cd "$TRAVIS_BUILD_DIR"
-env:
- global:
-   - GitHub_Ref: https://github.com/mengtanx/Momenta-Notes.git
