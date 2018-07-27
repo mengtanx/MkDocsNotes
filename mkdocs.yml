@@ -1,8 +1,34 @@
 # Project information
-site_name: 'Momenta Notes'
+site_name: "Momenta's Notes"
 site_description: "Momenta's Personal Notes"
 site_author: 'Momenta Liu'
 site_url: 'https://notes.mengtanx.com/'
+
+# Pages
+pages:
+  - 主页: 'index.md'
+  - 技术:
+    - 机器学习:
+      - '机器学习@周志华': 'ml/machine-learning.md'
+    - 深度学习:
+      - '深度学习': 'dl/deep-learning-with-python.md'
+    - SQL:
+      - 'MySQL 学习笔记': 'sql/mysql-learning-notes.md'
+    - Spark:
+      - 'Spark 快速大数据分析': 'spark/learning-spark.md'
+    - Java:
+      - 'Java 核心技术 第 10 版笔记': 'code/core-java.md'
+  - 碎片:
+    - 订阅专栏:
+        - 左耳听风:
+          - '开篇': 'slice/zuoer-ting-feng/preface.md'
+        - 人工智能基础课:
+          - '数学基础': 'slice/ai-foundation/math-basic.md'
+  # - 分析:
+  # - 思维:
+  # - 成长:
+  - 关于:
+    - '更新记录': 'about/release-notes.md'
 
 # Repository
 # repo_name: ''
@@ -42,5 +68,6 @@ markdown_extensions:
   - admonition
   - codehilite:
       guess_lang: false
+      css_class: code
   - toc:
       permalink: true
