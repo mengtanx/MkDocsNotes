@@ -7,24 +7,33 @@ site_url: 'https://notes.mengtanx.com/'
 # Pages
 pages:
   - 主页: 'index.md'
-  - 技术:
+  - 技术积淀:
     - 机器学习:
-      - '机器学习@周志华': 'ml/machine-learning.md'
+      - '机器学习@周志华': 'machine/machine-learning.md'
     - 深度学习:
-      - '深度学习': 'dl/deep-learning-with-python.md'
+      - '深度学习': 'deep/deep-learning-with-python.md'
+      - '动手学深度学习': 'deep/gluon-tutorial.md'
     - SQL:
       - 'MySQL 学习笔记': 'sql/mysql-learning-notes.md'
     - Spark:
       - 'Spark 快速大数据分析': 'spark/learning-spark.md'
     - Java:
       - 'Java 核心技术 第 10 版笔记': 'code/core-java.md'
-  - 碎片:
+  - 碎片知识:
     - 订阅专栏:
-        - 左耳听风:
-          - '开篇': 'slice/zuoer-ting-feng/preface.md'
-        - 人工智能基础课:
-          - '数学基础': 'slice/ai-foundation/math-basic.md'
-  # - 分析:
+      - 左耳听风:
+        - '开篇': 'slice/zuoer-ting-feng/preface.md'
+      - 数据结构与算法之美:
+        - '开篇': 'slice/data-structures-and-algorithms/intro.md'
+      - 人工智能基础课:
+        - '数学基础': 'slice/ai-foundation/math-basic.md'
+      - 在线教程:
+        - 机器学习算法各个击破:
+          - '机器学习基础知识': 'slice/machine-learning-algorithms/machine-learning-basics.md'
+  - 数据科学:
+    - 'Python 数据科学手册': 'data/analysis/python-data-science-handbook.md'
+    - '游戏数据分析的艺术': 'data/analysis/game-data-analysis.md'
+    - '数据化管理': 'data/analysis/dataization-management.md'
   # - 思维:
   # - 成长:
   - 关于:
