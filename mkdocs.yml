@@ -24,7 +24,10 @@ pages:
       - 左耳听风:
         - '开篇': 'slice/zuoer-ting-feng/preface.md'
       - 数据结构与算法之美:
-        - '开篇': 'slice/data-structures-and-algorithms/intro.md'
+        - '入门篇': 'slice/data-structures-and-algorithms/intro.md'
+        - '基础篇': 'slice/data-structures-and-algorithms/foundation.md'
+        - '高级篇': 'slice/data-structures-and-algorithms/advanced.md'
+        - '实战篇': 'slice/data-structures-and-algorithms/practice.md'
       - 人工智能基础课:
         - '数学基础': 'slice/ai-foundation/math-basic.md'
       - 在线教程:
@@ -75,8 +78,12 @@ google_analytics:
 # Extensions
 markdown_extensions:
   - admonition
+  - pymdownx.arithmatex
   - codehilite:
       guess_lang: false
       css_class: code
   - toc:
       permalink: true
+extra_javascript:
+  - 'javascripts/extra.js'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
