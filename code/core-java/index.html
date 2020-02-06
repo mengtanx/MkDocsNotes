@@ -1,0 +1,3426 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Momenta's Personal Notes">
+      
+      
+        <link rel="canonical" href="https://notes.mengtanx.com/code/core-java/">
+      
+      
+        <meta name="author" content="Momenta Liu">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Java 核心技术 第 10 版笔记 - Momenta's Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-121861821-2", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#java-10" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://notes.mengtanx.com/" title="Momenta's Notes" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Momenta's Notes
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Java 核心技术 第 10 版笔记
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://notes.mengtanx.com/" title="Momenta's Notes" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Momenta's Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      技术积淀
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        技术积淀
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../machine/machine-learning/" title="机器学习@周志华" class="md-nav__link">
+      机器学习@周志华
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      深度学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        深度学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep/deep-learning-with-python/" title="深度学习" class="md-nav__link">
+      深度学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep/gluon-tutorial/" title="动手学深度学习" class="md-nav__link">
+      动手学深度学习
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      SQL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        SQL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sql/mysql-learning-notes/" title="MySQL 学习笔记" class="md-nav__link">
+      MySQL 学习笔记
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Spark
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        Spark
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spark/learning-spark/" title="Spark 快速大数据分析" class="md-nav__link">
+      Spark 快速大数据分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5" checked>
+    
+    <label class="md-nav__link" for="nav-2-5">
+      Java
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-5">
+        Java
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Java 核心技术 第 10 版笔记
+      </label>
+    
+    <a href="./" title="Java 核心技术 第 10 版笔记" class="md-nav__link md-nav__link--active">
+      Java 核心技术 第 10 版笔记
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-java" class="md-nav__link">
+    第 1 章 Java 程序设计概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-java" class="md-nav__link">
+    第 2 章 Java 程序设计环境
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-java" class="md-nav__link">
+    第 3 章 Java 的基本程序设计结构
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-java" class="md-nav__link">
+    3.1 一个简单的 Java 应用程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 注释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 数据类型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    整型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    浮点型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#char" class="md-nav__link">
+    char 类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unicode-char" class="md-nav__link">
+    Unicode 和 char 类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean" class="md-nav__link">
+    boolean 类型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 变量
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    变量初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    常量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 运算符
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    数学函数与常量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    数值类型之间的转换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    强制类型转换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    结合赋值和运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    自增与自减运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean_1" class="md-nav__link">
+    关系和 boolean 运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    位运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    括号和运算符级别
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    枚举类型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    3.6 字符串
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    子串
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    拼接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    不可变字符串
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    检测字符串是否相等
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    空串与 null 串
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    码点与代码单元
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-api" class="md-nav__link">
+    String API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    构建字符串
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    3.7 输入输出
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    读取输入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    格式化输出
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    文件输入与输出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38" class="md-nav__link">
+    3.8 控制流程
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    块作用域
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    条件语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    循环
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    确定循环
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    多重选择：switch 语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break" class="md-nav__link">
+    中断控制流程语句 break
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39" class="md-nav__link">
+    3.9 大数值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310" class="md-nav__link">
+    3.10 数组
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-each" class="md-nav__link">
+    for each 循环
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    数组初始化以及匿名数组
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    数组拷贝
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    命令行参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    数组排序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    多维数组
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    不规则数组
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    第 4 章 对象与类
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 面向对象程序设计概述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 使用预定义类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 用户自定义类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    4.4 静态域与静态方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    4.5 方法参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" class="md-nav__link">
+    4.6 对象构造
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47" class="md-nav__link">
+    4.7 包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48" class="md-nav__link">
+    4.8 类路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#49" class="md-nav__link">
+    4.9 文档注释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#410" class="md-nav__link">
+    4.10 类设计技巧
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    第 5 章 继承
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    5.1 类、超类和子类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-object" class="md-nav__link">
+    5.2 Object：所有类的超类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    5.3 泛型数组列表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    5.4 对象包装器与自动装箱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    5.5 参数数量可变的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56" class="md-nav__link">
+    5.6 枚举类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57" class="md-nav__link">
+    5.7 反射
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58" class="md-nav__link">
+    5.8 继承的设计技巧
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-lambda" class="md-nav__link">
+    第 6 章 接口、lambda 表达式与内部类
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    6.1 接口
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    6.2 接口示例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-lambda" class="md-nav__link">
+    6.3 lambda 表达式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    6.4 内部类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    6.5 代理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    第 7 章 异常、断言和日志
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    7.1 处理错误
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    7.2 捕获异常
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    7.3 使用异常机制的技巧
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    7.4 使用断言
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    7.5 记录日志
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76" class="md-nav__link">
+    7.6 调试技巧
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    第 8 章 泛型程序设计
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    8.1 为什么要使用泛型程序设计
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    8.2 定义简单泛型类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    8.3 泛型方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    8.4 类型变量的限定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85" class="md-nav__link">
+    8.5 泛型代码和虚拟机
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86" class="md-nav__link">
+    8.6 约束与局限性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#87" class="md-nav__link">
+    8.7 泛型类型的集成规则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#88" class="md-nav__link">
+    8.8 通配符类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#89" class="md-nav__link">
+    8.9 反射和泛型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    第 9 章 集合
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-java" class="md-nav__link">
+    9.1 Java 集合框架
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    9.2 具体的集合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    9.3 映射
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    9.4 视图与包装器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95" class="md-nav__link">
+    9.5 算法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#96" class="md-nav__link">
+    9.6 遗留的集合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-java" class="md-nav__link">
+    第 13 章 部署 Java 应用程序
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-jar" class="md-nav__link">
+    13.1 JAR 文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    13.2 应用首选项的存储
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133" class="md-nav__link">
+    13.3 服务加载器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-applet" class="md-nav__link">
+    13.4 applet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-java-web-start" class="md-nav__link">
+    13.5 Java Web Start
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    第 14 章 并发
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141" class="md-nav__link">
+    14.1 什么事线程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142" class="md-nav__link">
+    14.2 中断线程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143" class="md-nav__link">
+    14.3 线程状态
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144" class="md-nav__link">
+    14.4 线程属性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#145" class="md-nav__link">
+    14.5 同步
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#146" class="md-nav__link">
+    14.6 阻塞队列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#147" class="md-nav__link">
+    14.7 线程安全的集合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#148-callable-future" class="md-nav__link">
+    14.8 Callable 与 Future
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#149" class="md-nav__link">
+    14.9 执行器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1410" class="md-nav__link">
+    14.10 同步器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1411-swing" class="md-nav__link">
+    14.11 线程与 Swing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-java" class="md-nav__link">
+    附录 A Java 关键字
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      碎片知识
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        碎片知识
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1">
+    
+    <label class="md-nav__link" for="nav-3-1">
+      订阅专栏
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        订阅专栏
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-1" type="checkbox" id="nav-3-1-1">
+    
+    <label class="md-nav__link" for="nav-3-1-1">
+      左耳听风
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-1">
+        左耳听风
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slice/zuoer-ting-feng/preface/" title="开篇" class="md-nav__link">
+      开篇
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-2" type="checkbox" id="nav-3-1-2">
+    
+    <label class="md-nav__link" for="nav-3-1-2">
+      数据结构与算法之美
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-2">
+        数据结构与算法之美
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slice/data-structures-and-algorithms/intro/" title="入门篇" class="md-nav__link">
+      入门篇
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slice/data-structures-and-algorithms/foundation/" title="基础篇" class="md-nav__link">
+      基础篇
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slice/data-structures-and-algorithms/advanced/" title="高级篇" class="md-nav__link">
+      高级篇
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slice/data-structures-and-algorithms/practice/" title="实战篇" class="md-nav__link">
+      实战篇
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-3" type="checkbox" id="nav-3-1-3">
+    
+    <label class="md-nav__link" for="nav-3-1-3">
+      人工智能基础课
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-3">
+        人工智能基础课
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slice/ai-foundation/math-basic/" title="数学基础" class="md-nav__link">
+      数学基础
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-4" type="checkbox" id="nav-3-1-4">
+    
+    <label class="md-nav__link" for="nav-3-1-4">
+      在线教程
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-4">
+        在线教程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-4-1" type="checkbox" id="nav-3-1-4-1">
+    
+    <label class="md-nav__link" for="nav-3-1-4-1">
+      机器学习算法各个击破
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
+      <label class="md-nav__title" for="nav-3-1-4-1">
+        机器学习算法各个击破
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slice/machine-learning-algorithms/machine-learning-basics/" title="机器学习基础知识" class="md-nav__link">
+      机器学习基础知识
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      数据科学
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        数据科学
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/analysis/python-data-science-handbook/" title="Python 数据科学手册" class="md-nav__link">
+      Python 数据科学手册
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/analysis/game-data-analysis/" title="游戏数据分析的艺术" class="md-nav__link">
+      游戏数据分析的艺术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/analysis/dataization-management/" title="数据化管理" class="md-nav__link">
+      数据化管理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      关于
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        关于
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../about/release-notes/" title="更新记录" class="md-nav__link">
+      更新记录
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-java" class="md-nav__link">
+    第 1 章 Java 程序设计概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-java" class="md-nav__link">
+    第 2 章 Java 程序设计环境
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-java" class="md-nav__link">
+    第 3 章 Java 的基本程序设计结构
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-java" class="md-nav__link">
+    3.1 一个简单的 Java 应用程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 注释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 数据类型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    整型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    浮点型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#char" class="md-nav__link">
+    char 类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unicode-char" class="md-nav__link">
+    Unicode 和 char 类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean" class="md-nav__link">
+    boolean 类型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 变量
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    变量初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    常量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 运算符
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    数学函数与常量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    数值类型之间的转换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    强制类型转换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    结合赋值和运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    自增与自减运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean_1" class="md-nav__link">
+    关系和 boolean 运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    位运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    括号和运算符级别
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    枚举类型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    3.6 字符串
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    子串
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    拼接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    不可变字符串
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    检测字符串是否相等
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    空串与 null 串
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    码点与代码单元
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-api" class="md-nav__link">
+    String API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    构建字符串
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    3.7 输入输出
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    读取输入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    格式化输出
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    文件输入与输出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38" class="md-nav__link">
+    3.8 控制流程
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    块作用域
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    条件语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    循环
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    确定循环
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    多重选择：switch 语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break" class="md-nav__link">
+    中断控制流程语句 break
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39" class="md-nav__link">
+    3.9 大数值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310" class="md-nav__link">
+    3.10 数组
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-each" class="md-nav__link">
+    for each 循环
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    数组初始化以及匿名数组
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    数组拷贝
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    命令行参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    数组排序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    多维数组
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    不规则数组
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    第 4 章 对象与类
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 面向对象程序设计概述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 使用预定义类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 用户自定义类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    4.4 静态域与静态方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    4.5 方法参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" class="md-nav__link">
+    4.6 对象构造
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47" class="md-nav__link">
+    4.7 包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48" class="md-nav__link">
+    4.8 类路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#49" class="md-nav__link">
+    4.9 文档注释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#410" class="md-nav__link">
+    4.10 类设计技巧
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    第 5 章 继承
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    5.1 类、超类和子类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-object" class="md-nav__link">
+    5.2 Object：所有类的超类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    5.3 泛型数组列表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    5.4 对象包装器与自动装箱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    5.5 参数数量可变的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56" class="md-nav__link">
+    5.6 枚举类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57" class="md-nav__link">
+    5.7 反射
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58" class="md-nav__link">
+    5.8 继承的设计技巧
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-lambda" class="md-nav__link">
+    第 6 章 接口、lambda 表达式与内部类
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    6.1 接口
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    6.2 接口示例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-lambda" class="md-nav__link">
+    6.3 lambda 表达式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    6.4 内部类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    6.5 代理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    第 7 章 异常、断言和日志
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    7.1 处理错误
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    7.2 捕获异常
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    7.3 使用异常机制的技巧
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    7.4 使用断言
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    7.5 记录日志
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76" class="md-nav__link">
+    7.6 调试技巧
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    第 8 章 泛型程序设计
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    8.1 为什么要使用泛型程序设计
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    8.2 定义简单泛型类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    8.3 泛型方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    8.4 类型变量的限定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85" class="md-nav__link">
+    8.5 泛型代码和虚拟机
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86" class="md-nav__link">
+    8.6 约束与局限性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#87" class="md-nav__link">
+    8.7 泛型类型的集成规则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#88" class="md-nav__link">
+    8.8 通配符类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#89" class="md-nav__link">
+    8.9 反射和泛型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    第 9 章 集合
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-java" class="md-nav__link">
+    9.1 Java 集合框架
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    9.2 具体的集合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    9.3 映射
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    9.4 视图与包装器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95" class="md-nav__link">
+    9.5 算法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#96" class="md-nav__link">
+    9.6 遗留的集合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-java" class="md-nav__link">
+    第 13 章 部署 Java 应用程序
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-jar" class="md-nav__link">
+    13.1 JAR 文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    13.2 应用首选项的存储
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133" class="md-nav__link">
+    13.3 服务加载器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-applet" class="md-nav__link">
+    13.4 applet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-java-web-start" class="md-nav__link">
+    13.5 Java Web Start
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    第 14 章 并发
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141" class="md-nav__link">
+    14.1 什么事线程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142" class="md-nav__link">
+    14.2 中断线程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143" class="md-nav__link">
+    14.3 线程状态
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144" class="md-nav__link">
+    14.4 线程属性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#145" class="md-nav__link">
+    14.5 同步
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#146" class="md-nav__link">
+    14.6 阻塞队列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#147" class="md-nav__link">
+    14.7 线程安全的集合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#148-callable-future" class="md-nav__link">
+    14.8 Callable 与 Future
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#149" class="md-nav__link">
+    14.9 执行器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1410" class="md-nav__link">
+    14.10 同步器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1411-swing" class="md-nav__link">
+    14.11 线程与 Swing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-java" class="md-nav__link">
+    附录 A Java 关键字
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="java-10">Java 核心技术 第 10 版笔记<a class="headerlink" href="#java-10" title="Permanent link">&para;</a></h1>
+<p>学习 Java 提供的所有高级特性：</p>
+<ul>
+<li>面向对象程序设计</li>
+<li>反射与代理</li>
+<li>接口与内部类</li>
+<li>异常处理</li>
+<li>泛型程序设计</li>
+<li>集合框架</li>
+<li>并行操作</li>
+</ul>
+<h2 id="1-java">第 1 章 Java 程序设计概述<a class="headerlink" href="#1-java" title="Permanent link">&para;</a></h2>
+<p>Java 的设计者编写了颇有影响力的 “ 白皮书”，用来解释设计的初衷以及完成的情况，并且发布了一个简短的摘要。这个摘要可以用以下 11 个关键术语进行组织：</p>
+<ol>
+<li>简单性：Java 语法是 C++ 语法的一个“纯净”版本，没有头文件、指针运算（甚至指针语法）、结构、联合、操作符重载、虚基类。简单的另一个方面是小，Java 具有一个独立的具有较小类库的 Java 微型版（Java Micro Edition），适用于嵌入式设备。</li>
+<li>面向对象：Java 的面向对象特性与 C++ 旗鼓相当，主要不同点在于多重继承，在 Java 中，取而代之的是更简单的接口概念。并且 Java 提供了更丰富的运行时自省功能。</li>
+<li>分布式</li>
+<li>健壮性：Java 编译器能够检测许多在其他语言中仅在运行时才能检测出来的问题。</li>
+<li>安全性：使用 Java 可以构建防病毒、防篡改的系统，Java 设计成能够防范各种攻击。</li>
+<li>体系结构中立</li>
+<li>可移植性：Java 规范中对基本数据类型的大小以及有关运算都做了明确的说明，没有“依赖具体实现”的地方。如 Java 中的 int 永远为 32 位整数，二进制数据以固定格式进行存储和传输，消除了字节顺序的困扰。字符串是用标准的 Unicode 格式存储的。</li>
+<li>解释型：Java 解释器可以在任何移植了解释器的机构上执行 Java 字节码，开发过程可以变得更加快捷，更加具有探索性。</li>
+<li><strong>高性能</strong></li>
+<li>多线程：多线程可以带来更好的交互响应和实时行为。</li>
+<li>动态性：从各种角度看，Java 与 C 或 C++ 相比更加具有动态性。它能够适应不断发展的环境。库中可以自由地添加新方法和实例变量，而对客户端却没有任何影响。</li>
+</ol>
+<p>注释：写这本书时,白皮书可以在 www.oracle.com/technetwork/java/langenv-140151.html 上找对于 11 个关键术语的论述请参看 http://horstmann.com/corejava/java-an-interview/7Gosling.pdf。</p>
+<h2 id="2-java">第 2 章 Java 程序设计环境<a class="headerlink" href="#2-java" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Java 术语</li>
+</ul>
+<h2 id="3-java">第 3 章 Java 的基本程序设计结构<a class="headerlink" href="#3-java" title="Permanent link">&para;</a></h2>
+<h3 id="31-java">3.1 一个简单的 Java 应用程序<a class="headerlink" href="#31-java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>关键字 public 称为访问修饰符 access modifier，用于控制程序的其他部分对这段代码的访问级别</li>
+<li>关键字 class 表明 Java 程序中的全部内容都包含在类中。这里只是将类作为一个加载程序逻辑的容器。</li>
+<li>Java 应用程序中的全部内容都必须放置在类中。关键字 class 后面紧跟类名，类名遵循驼峰命名法。</li>
+<li>源代码的文件名必须与公共类的名字相同，并用 .java 作为扩展名。并且区分大小写。</li>
+<li>需要记住：每个 Java 应用程序都必须有一个 main 方法，且必须是静态的。</li>
+</ul>
+<h3 id="32">3.2 注释<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<ol>
+<li>行注释 //</li>
+<li>块注释 /<em> </em>/</li>
+<li>文档注释 /*<em> </em>/</li>
+</ol>
+<p>注意：在 Java 中，/<em> </em>/ 不能嵌套</p>
+<h3 id="33">3.3 数据类型<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<p>Java 一共有 8 种基本数据类型（primitive type），包括 4 种整型，2 种浮点类型，1 中用于表示 Unicode 编码的字符单元的字符类型 char 和 1 种用于表示真值的 boolean 类型。</p>
+<h4 id="_1">整型<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<p>在 Java 中，整型的范围与运行 Java 代码的机器无关，解决了软件在不同平台或操作系统间移植的问题。<strong>注意：Java 没有任何无符号（unsigned）形式的 int、long、short 或 byte 类型。</strong></p>
+<ul>
+<li>int 4 字节 ≈20亿</li>
+<li>short 2 字节 -32768-32767</li>
+<li>long 8 字节</li>
+<li>byte 1 字节 -128-127</li>
+</ul>
+<p>长整型有一个后缀 L 或 l，十六进制数有一个前缀 0X 或 0x，八进制数有一个前缀 0，如 010 对应八进制中的 8。由于八进制表示法比较容易混淆，建议最好不要使用八进制常熟。</p>
+<p>从 Java 7 开始，加上前缀 0b 或 0B 就可以写二进制数，如 0b1001 表示 9；还可以为数字字面量加下划线，如 1_000_000 表示一百万，这些下划线可以提升可读性。Java 编译器会去除这些下划线。</p>
+<h4 id="_2">浮点型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>float 4 字节，有效数字精确到 6-7 位</li>
+<li>double 8 字节，有效数字精确到 15 位</li>
+</ul>
+<p>float 类型的数值需要有一个后缀 F 或 f，没有后缀的浮点数默认为 double 类型。所有的浮点数值计算都遵循 IEEE 754 规范，具体来说，有三个用于表示移除和出错情况的三个特殊的浮点数值：</p>
+<ul>
+<li>正无穷大：<code>Double.POSITIVE_INFINITY</code></li>
+<li>负无穷大：<code>Double.NEGATIVE_INFINITY</code></li>
+<li>NaN（不是一个数字）：<code>Double.NaN</code>。可以用 Double.isNaN() 方法来检测一个特定值是否等于 Double.NaN。如计算 0/0 或者负数的平方根结果为 NaN</li>
+<li><strong>浮点数不适用于无法接受舍入误差的金融计算中。</strong>如果数值计算中不允许有任何舍入误差，就应该使用 BigDecimal 类。</li>
+</ul>
+<div class="code"><pre><span></span><span class="c1">// is never true</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">Double</span><span class="p">.</span><span class="na">NaN</span><span class="p">)</span>
+
+<span class="c1">// 所有“非数值”的值都认为是不相同的，可以使用 Double.isNaN 方法</span>
+<span class="c1">// check whether x is &quot;Not a Number&quot;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">Double</span><span class="p">.</span><span class="na">isNaN</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+
+
+<h4 id="char">char 类型<a class="headerlink" href="#char" title="Permanent link">&para;</a></h4>
+<ul>
+<li>需要注意的是，Java 中的 char 类型原本用于表示单个字符，但现在 Unicode 字符可以用一个 char 值描述，另外一些 Unicode 字符则需要两个 char 值。</li>
+<li>char 类型的字面量值要用<strong>单引号</strong>括起来。如 <code>'A'</code> 是编码值为 65 所对应的字符常量，它与字符串 <code>"A"</code> 不同。</li>
+<li>char 类型的值可以表示为十六进制值，其范围从 <code>\u0000</code> 到 <code>\Uffff</code>。</li>
+<li>Java 中用于表示特殊字符的转义序列包括以下，这些都可以出现在加引号的字符字面量或字符串中。<ul>
+<li><code>\b</code> 退格</li>
+<li><code>\t</code> 制表</li>
+<li><code>\n</code> 换行</li>
+<li><code>\r</code> 回车</li>
+<li><code>\"</code> 双引号</li>
+<li><code>\'</code> 单引号</li>
+<li><code>\\</code> 反斜杠</li>
+</ul>
+</li>
+<li><strong>特殊的，转移序列 <code>\u</code> 还可以出现在加引号的字符常量或字符串之外，而其他转义序列不可以。</strong> 字符需要一对代码单元表示。</li>
+<li>char 类型是一个采用 UTF-16 编码表示 Unicode 码点的代码单元。大多数的常用 Unicode 字符使用一个代码单元就可以表示，而辅助字符需要一对代码单元表示。</li>
+</ul>
+<div class="code"><pre><span></span><span class="c1">// 以下写法完全符合语法规则</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span> <span class="n">String</span> <span class="err">\</span><span class="n">u005B</span> <span class="err">\</span><span class="n">u005D</span> <span class="n">args</span><span class="p">)</span>
+</pre></div>
+
+
+<h4 id="unicode-char">Unicode 和 char 类型<a class="headerlink" href="#unicode-char" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>详细解释 Java 中如何解决 Unicode 编码问题的</p>
+</blockquote>
+<p>在 Java 中，char 类型描述了 UTF-16 编码中的一个代码单元。
+<strong>我们强烈建议不要在程序中使用 char 类型，除非确实需要处理 UTF-16 代码单元。最好将字符串作为抽象数据类型处理。</strong></p>
+<h4 id="boolean">boolean 类型<a class="headerlink" href="#boolean" title="Permanent link">&para;</a></h4>
+<p><strong>整数值和布尔值之间不能进行相互转换。</strong></p>
+<h3 id="34">3.4 变量<a class="headerlink" href="#34" title="Permanent link">&para;</a></h3>
+<ul>
+<li>声明变量的语句必须以分号结束。</li>
+<li>可以在一行中声明多个变量，但不提倡使用这种风格，建议逐一声明每一个变量以提升程序的可读性。</li>
+<li>变量名必须是一个以字母开头并由字母或数字构成的序列。变量名对大小写敏感的，在对两个不同的变量进行命名时，最好不要只存在大小写上的差异。</li>
+<li><strong>需要注意的是，与大多数程序设计语言相比，Java 中的字母和数字的范围更大。</strong><ul>
+<li>字母包括 <code>'A'</code>~ <code>'Z'</code>, <code>'a'</code> ~ <code>'z'</code>, <code>'_'</code>, <code>'$'</code> 或在某种语言中表示字母的任何 Unicode 字符。<em>可以使用 Character 类的 isJavaIdentifierStart 和 isJavaIdentifierPart 方法来检查。</em></li>
+<li>数字包括 <code>'0'</code> ~ <code>'9'</code> 和在某种语言中表示数字的任何 Unicode 字符</li>
+<li>但 <code>'+'</code> 和 <code>©</code>这样的符号不能出现在变量名中，空格也不行。</li>
+</ul>
+</li>
+<li>变量名中所有的字符都是有意义的，并且大小写敏感。</li>
+<li>变量名的长度基本上没有限制。</li>
+<li><strong>尽管 <code>$</code> 是一个合法的 Java 字符，但不要在自己的代码中使用这个字符。它只用在 Java 编译器或其他工具生成的名字中。</strong></li>
+<li>另外，不能使用 Java 保留字作为变量名。</li>
+</ul>
+<h4 id="_3">变量初始化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>声明一个变量之后，必须用赋值语句对变量进行显示初始化。千万不要使用未初始化的变量，编译时出错。如 <code>int vacationDays = 12;</code></li>
+<li>虽然在 Java 中可以将声明放在代码的任何地方，但是建议在变量的声明尽可能地靠近变量第一次使用的地方，这是一种良好的程序编写风格。**Java 中不区分变量的声明与定义，在 C 和 C++ 中区分变量的声明与定义。</li>
+</ul>
+<h4 id="_4">常量<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>在  Java 中，利用关键字 <code>final</code> 指示常量,关键字 <code>final</code> 表示这个变量只能被赋值一次，一旦被赋值之后，就不能再更改了。<em>习惯上，常量名使用全大写。</em></li>
+<li>在 Java 中，经常希望某个常量可以在一个类中的多个方法中出使用，通常将这些常量成为类常量。可以使用关键字 <code>static final</code> 设置一个类常量。</li>
+<li>需要注意，类常量的定义位于 main 方法的外部。因此，在同一个类的其他方法中也可以使用这个常量。而且如果一个常量被声明为 public，那么其他类的方法也可以使用这个常量。</li>
+</ul>
+<div class="code"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Constants2</span>
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">CM_PER_INCH</span> <span class="o">=</span> <span class="mf">2.54</span><span class="p">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">paperWidth</span> <span class="o">=</span> <span class="mf">8.5</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">paperHeight</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Paper size in centimeters: &quot;</span>
+            <span class="o">+</span> <span class="n">paperWidth</span> <span class="o">*</span> <span class="n">CM_PER_INCH</span> <span class="o">+</span> <span class="s">&quot; by &quot;</span> <span class="o">+</span> <span class="n">paperHeight</span> <span class="o">*</span> <span class="n">CM_PER_INCH</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="35">3.5 运算符<a class="headerlink" href="#35" title="Permanent link">&para;</a></h3>
+<ul>
+<li>需要注意，整数被 0 除将会产生一个异常，而浮点数被 0 除将会得到无穷大或 NaN 结果。</li>
+<li>可以将 main 方法标记为 <code>public static strictfp void main(String[] args)</code>，使得 main 方法中的所有指令都将使用严格的浮点计算。如果一个类标记为 stricfp，这个类中的所有方法都要使用严格的浮点计算。</li>
+</ul>
+<h4 id="_5">数学函数与常量<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>常用数学函数<ul>
+<li>Math.sqrt</li>
+<li>Math.pow</li>
+<li>Math.round</li>
+<li>Math.floorMod</li>
+<li>Math.sin</li>
+<li>Math.cos</li>
+<li>Math.tan</li>
+<li>Math.atan</li>
+<li>Math.atan2</li>
+<li>Math.exp</li>
+<li>Math.log</li>
+<li>Math.log10</li>
+</ul>
+</li>
+<li>常量<ul>
+<li>Math.PI</li>
+<li>Math.E</li>
+</ul>
+</li>
+<li>自由发布的 Math 库（fdlibm）提供 StrictMath 类，可以确保在所有平台上得到相同的结果和完全可预测的结果。</li>
+</ul>
+<h4 id="_6">数值类型之间的转换<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>数值类型之间的合法转换
+<img alt="-w376" src="media/15298102493952/15311359208360.jpg" /></p>
+<h4 id="_7">强制类型转换<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li>在 Java 中，可以通过强制类型转换（cast）将浮点值的小数部分截断并转换为整型。</li>
+<li>如果试图将一个数值从一种类型强制转换为另一种类型，而又超出了目标类型的表示范围，结果就会截断成一个完全不同的值。如 <code>(byte)300</code> 的实际值为 44。</li>
+<li>**不要在 boolean 类型与任何数值类型之间进行强制类型转换，这样可以防止发生错误。只有极少数的情况下才需要将布尔类型转换为数值类型，这时候可以使用条件表达式 <code>b ? 1 : 0</code></li>
+</ul>
+<h4 id="_8">结合赋值和运算符<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code></li>
+</ul>
+<h4 id="_9">自增与自减运算符<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>n++</code> 先代入表达式计算，再加一</li>
+<li><code>n--</code> 先代入表达式计算，再减一</li>
+<li><code>++n</code> 先加一，再代入表达式计算</li>
+<li><code>--n</code> 先减一，再代入表达式计算</li>
+</ul>
+<div class="code"><pre><span></span><span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="o">++</span><span class="n">m</span><span class="p">;</span> <span class="c1">// now a = 16, m = 8</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span><span class="o">++</span><span class="p">;</span> <span class="c1">// now b is 14, n = 8</span>
+</pre></div>
+
+
+<h4 id="boolean_1">关系和 boolean 运算符<a class="headerlink" href="#boolean_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>关系运算符：<code>==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
+<li>逻辑运算符：<strong>短路运算</strong><ul>
+<li><code>&amp;&amp;</code> 逻辑与</li>
+<li><code>||</code> 逻辑或</li>
+<li><code>!</code> 逻辑非</li>
+</ul>
+</li>
+<li>三元操作符 <code>?:</code>: <code>condition ? expression1 : expression2</code></li>
+</ul>
+<h4 id="_10">位运算符<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<ul>
+<li>处理整数类型时，可以直接对组成整型数值的各个位完成操作。这意味着可以使用掩码技术得到整数中的各个位。位运算符包括：<ul>
+<li><code>&amp;</code> and</li>
+<li><code>|</code> or</li>
+<li><code>^</code> xor</li>
+<li><code>~</code> not</li>
+<li><code>&gt;&gt;</code> 和 <code>&lt;&lt;</code> 将位模式左移或右移。在需要建立位模式来完成位掩码时，这两个运算符会很方便。</li>
+<li><code>&gt;&gt;&gt;</code> 运算符会用 0 填充高位，与 <code>&gt;&gt;</code> 不同，它会用符号位填充高位，不存在 <code>&lt;&lt;&lt;</code> 运算符。</li>
+<li>**移位运算符的右操作数要完成模 32 的运算（除非左操作数是 long 类型，在这种情况下需要对右操作数模 64）。如 <code>1&lt;&lt;35</code> 的值等同于 <code>1&lt;&lt;3</code> 或 <code>8</code>。</li>
+</ul>
+</li>
+<li>位运算符应用在布尔值上时，<code>&amp;</code> 和 <code>|</code> 也会得到一个布尔值，与 <code>&amp;&amp;</code> 和 <code>||</code> 运算符类似，不过不采用短路方式来运算。</li>
+</ul>
+<h4 id="_11">括号和运算符级别<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>运算符 优先级</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>结合性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[].()</code> 方法调用</td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td><code>!</code> <code>~</code> <code>++</code> <code>--</code> <code>+</code>（一元运算）<code>-</code>（一元运算）<code>()</code>（强制类型转换）</td>
+<td>从右向左</td>
+</tr>
+<tr>
+<td><code>*</code> <code>/</code> <code>%</code></td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td><code>+</code> <code>-</code></td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;</code> <code>&gt;&gt;</code> <code>&gt;&gt;&gt;</code></td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td><code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code> <code>instanceof</code></td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td><code>==</code> <code>!=</code></td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td><code>&amp;</code></td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td><code>|</code></td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td><code>&amp;&amp;</code></td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td><code>||</code></td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td><code>?:</code></td>
+<td>从右向左</td>
+</tr>
+<tr>
+<td><code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>&amp;=</code> <code>|=</code> <code>^=</code> <code>&lt;&lt;=</code> <code>&gt;&gt;=</code> <code>&gt;&gt;&gt;=</code></td>
+<td>从右向左</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_12">枚举类型<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<ul>
+<li>当变量的取值只在一个有限的集合内时，可以自定义枚举类型。枚举类型包括有限个命名的值，如可以这样定义 <code>enum Size { SMALL, MEDIUM, LARGE, EXTRA_LARGE };</code>，之后可以声明这种类型的变量 <code>Size s = Size.MEDIUM;</code></li>
+<li>Size 类型的变量智能存储这个类型声明中给定的某个枚举值，或者 null 值，null 表示这个变量没有设置任何值。</li>
+</ul>
+<h3 id="36">3.6 字符串<a class="headerlink" href="#36" title="Permanent link">&para;</a></h3>
+<ul>
+<li>从概念上将，Java 字符串就是 Unicode 字符序列。如字符串 <code>"Java\u2122"</code> 是由 5 个 Unicode 字符 J, a, v, a 和™️ 组成的。</li>
+<li>Java 没有内置的字符串类型，而是在标准 Java 类库中提供了一个预定义类 String。每个用双引号括起来的字符串都是 String 类的一个实例。</li>
+</ul>
+<h4 id="_13">子串<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<ul>
+<li>String 类的 substring 方法可以从一个较大的字符串提取出一个子串。</li>
+<li>substring 方法可以很容易计算出子串的长度，如字符串 s.substring(a, b) 的长度为 b-a。</li>
+</ul>
+<h4 id="_14">拼接<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Java 语言允许使用 <code>+</code> 连接（拼接）两个字符串。</li>
+<li>当将一个字符串与一个非字符串的值进行拼接时，后者被转换为字符串。<strong>实际上，任何一个 Java 对象都可以被转换成字符串。</strong></li>
+<li>如果需要把多个字符串放在一起，用一个定界符分割，可以使用静态 join 方法。如 <code>String all = String.join(" / ", "S", "M", "L", "XL");</code></li>
+</ul>
+<h4 id="_15">不可变字符串<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<ul>
+<li>String 类没有提供用于修改字符串的方法。由于不能修改 Java 字符串中的字符，在 Java 中将 String 类对象称为不可变字符串。</li>
+<li><strong>不可变字符串的优点是编译器可以让字符串共享。</strong>Java 设计者认为共享带来的高效率远远胜过于提取、拼接字符串所带来的低效率。</li>
+<li>Java 为来自于文件或键盘的单个字符或较短的字符串汇集成字符串的操作提供了一个独立的类。</li>
+</ul>
+<h4 id="_16">检测字符串是否相等<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<ul>
+<li>可以使用 <code>equals</code> 方法检测两个字符串是否相等。如 <code>s.equals(t)</code> 或 <code>"Hello".equals("greeting")</code></li>
+<li>可以使用 <code>equalsIgnoreCase</code> 方法不区分大小写的检测两个字符串是否相等</li>
+<li>一定不要使用 <code>==</code> 运算符来检测两个字符串是否相等，这个运算符只能确定两个字符串是否放置在同一个位置上。</li>
+<li>Java 中的 <code>compareTo</code> 方法与 C 中的 <code>strcmp</code> 完全类似，如 <code>if (greeting.compareTo("Hello") == 0)</code></li>
+</ul>
+<h4 id="null">空串与 null 串<a class="headerlink" href="#null" title="Permanent link">&para;</a></h4>
+<ul>
+<li>空串 <code>""</code> 是长度为 0 的字符串，可以调用以下代码检查一个字符串是否为空：<code>if (str.length() == 0)</code> 或 <code>if (str.equals(""))</code><ul>
+<li>空串是一个 Java 对象，有自己的串长度（0）和内容（空）。</li>
+</ul>
+</li>
+<li>String 类型的变量还可以存放一个特殊的值：null，这表示目前没有任何对象与该变量关联。<ul>
+<li>要检查一个字符串是否为 null，可以使用：<code>if (str == null)</code></li>
+<li>检查一个字符串既不是 null 也不为空串，可以使用：<code>if (str != null) &amp;&amp; (str.length() != 0)</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="_17">码点与代码单元<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>Java 字符串是由 char 值序列组成。char 类型是一个采用 UTF-16 编码表示 Unicode 码点的代码单元。大多数的常用 Unicode 字符使用一个代码单元就可以表示，而辅助字符需要一对代码单元表示。</p>
+<ul>
+<li>length 方法将返回采用 UTF-16 编码表示的给定字符串所需要的代码单元数量</li>
+<li>codePointCount 方法可以得到实际的长度，即码点数量。<code>int cpCount = greeting.codePointCount(0, greeting.length());</code></li>
+<li>调用 s.charAt(n) 将返回位置 n 的代码单元，n 介于 0 ~ s.length() - 1 之间，<code>char first = greeting.charAt(0); // first is 'H'</code></li>
+<li>要想得到第 i 个码点，可以使用：<code>int index = greeting.offsetByCodePoints(0, i); int cp = greeting.codePointAt(index);</code></li>
+</ul>
+<div class="code"><pre><span></span><span class="c1">// 遍历一个字符串，依次查看每一个码点</span>
+<span class="kt">int</span> <span class="n">cp</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="na">codePointAt</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">Character</span><span class="p">.</span><span class="na">isSupplementaryCodePoint</span><span class="p">(</span><span class="n">cp</span><span class="p">))</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">else</span>
+    <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="c1">// 回退操作</span>
+<span class="n">i</span><span class="o">--</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">Character</span><span class="p">.</span><span class="na">isSurrogate</span><span class="p">(</span><span class="n">sentence</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+    <span class="n">i</span><span class="o">--</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">cp</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="na">codePointAt</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+
+<span class="c1">// 直接使用 codePoints 方法，生成一个 int 值的流，每个 int 值对应一个码点</span>
+<span class="c1">// 可以将它转换为一个数组，再完成遍历</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">codePoints</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="na">codePoints</span><span class="p">().</span><span class="na">toArray</span><span class="p">();</span>
+<span class="c1">// 反之，要把一个码点数组转换为一个字符串，可以使用构造函数</span>
+<span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="n">codePoints</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">codePoints</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
+</pre></div>
+
+
+<h4 id="string-api">String API<a class="headerlink" href="#string-api" title="Permanent link">&para;</a></h4>
+<p>Java 中的 String 类包含了 50 多个方法。令人惊讶的是绝大多数都很有用，使用也非常频繁。一下列出 <code>java.lang.String</code> 的常用方法：</p>
+<ul>
+<li><code>char charAt(int index)</code> 返回给定位置的代码单元，*除非对底层的代码单元感兴趣，否则不需要调用这个方法。</li>
+<li><code>int codePointAt(int index)</code> 5.0 返回从给定位置开始的码点。</li>
+<li><code>int offsetByCodePoints(int startIndex, int cpCount)</code> 5.0 返回从 startIndex 代码点开始，位移 cpCount 后的码点索引。</li>
+<li><code>int compareTo(String other)</code> 按照字典顺序，如果字符串位于 other 之前，返回一个附属；反之返回一个整数；若相等，返回 0。</li>
+<li><code>IntStream codePoints()</code> 8.0 将这个字符串的码点作为一个流返回。调用 toArray 将它们放在一个数组中。</li>
+<li><code>new String(int[] codePoints, int offset, int count)</code> 5.0 用数组中从 offset 开始的 count 个码点构造一个字符串。</li>
+<li><code>boolean equals(Object other)</code> 如果字符串与 other 相等，返回 true。</li>
+<li><code>boolean equalsIgnoreCase(String other)</code> 如果字符串与 other 相等（忽略大小写），返回 true。</li>
+<li><code>boolean startsWith(String prefix)</code></li>
+<li><code>boolean endsWith(String suffix)</code> 如果字符串以 prefix 开头或 suffix 结尾，则返回 true。</li>
+<li><code>int indexOf(String str)</code></li>
+<li><code>int indexOf(String str, int fromIndex)</code></li>
+<li><code>int indexOf(int cp)</code></li>
+<li><code>int indexOf(int cp, int fromIndex)</code> 返回与字符串 str 或代码点 cp 匹配的第一个子串的开始位置。这个位置从索引 0 或 fromIndex 开始计算。如果在原始串中不存在 str，返回 -1。</li>
+<li><code>int lastIndexOf(String str)</code></li>
+<li><code>int lastIndexOf(String str, int fromIndex)</code></li>
+<li><code>int lastIndexOf(int cp)</code></li>
+<li><code>int lastIndexOf(int cp, int fromIndex)</code> 返回与字符串 str 或代码点 cp 匹配的最后一个子串的开始位置。这个位置从原始串尾端或 fromIndex 开始计算。</li>
+<li><code>int length()</code> 返回字符串的长度。</li>
+<li><code>int codePointCount(int startIndex, int endIndex)</code> 5.0 返回 startIndex 和 endIndex - 1 之间的代码点数量。没有配成对的代用字符将计入代码点。</li>
+<li><code>String replace(CharSequence oldString, CharSequence newString)</code> 返回一个新字符串。这个字符串用 newString 代替原始字符串中所有的 oldString。可以用 String 或 StringBuilder 对象作为 CharSequence 参数。</li>
+<li><code>String substring(int beginIndex)</code></li>
+<li><code>String substring(int beginIndex, int endIndex)</code> 返回一个新字符串。这个字符串包含原始字符串中从 beginIndex 到串尾或 endIndex - 1 的所有代码单元。</li>
+<li><code>String toLowerCase()</code></li>
+<li><code>String toUpperCase()</code> 返回一个新字符串。这个字符串将原始字符串中的大写/小写字母改为小写/大写字母。</li>
+<li><code>String trim()</code> 返回一个新字符串。这个字符串将删除了原始字符串头部和尾部的空格。</li>
+<li><code>String join(CharSequence delimiter, CharSequence... elements)</code> 8.0 返回一个新字符串，用给定的定界符连接所有元素。</li>
+</ul>
+<p>注：CharSequence 类型的参数是一种接口类型，所有字符串都属于这个接口。</p>
+<h4 id="_18">构建字符串<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>在 JDK5.0 中，引入了 StringBuilder 类，可以将许多小段的字符串构建成一个字符串。另外 StringBuffer 类与 StringBuilder 类相同，但其效率稍有些低，允许采用多线程的方式执行添加或删除字符的操作。<strong>若所有字符串在一个单线程中编辑（通常都是这样），则建议使用 StringBuilder 类。</strong></p>
+<div class="code"><pre><span></span><span class="c1">// 构建一个空的字符串构建器</span>
+<span class="n">StringBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
+<span class="c1">// 当每次需要添加一部分内容时，就调用 append 方法</span>
+<span class="n">builder</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span> <span class="c1">// appends a single character</span>
+<span class="n">builder</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">str</span><span class="p">);</span> <span class="c1">// appends a string</span>
+<span class="c1">// 当需要构建字符串时调用 toString 方法就可以得到一个 String 对象，其中包含了构建器中的字符序列</span>
+<span class="n">String</span> <span class="n">completedString</span> <span class="o">=</span> <span class="n">builder</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span>
+</pre></div>
+
+
+<p>StringBuilder 类中的重要方法：</p>
+<ul>
+<li><code>StringBuilder()</code> 构造一个空的字符串构建器。</li>
+<li><code>int length()</code> 返回构建器或缓冲器中的代码单元数量。</li>
+<li><code>StringBuilder append(String str)</code> 追加一个字符串并返回 this。</li>
+<li><code>StringBuilder append(char c)</code> 追加一个代码单元并返回 this。</li>
+<li><code>StringBuilder appendCodePoint(int cp)</code> 追加一个代码点，并将其转换为一个或两个代码单元并返回 this。</li>
+<li><code>void setCharAt(int i, char c)</code> 将第 i 个代码单元设置为 c。</li>
+<li><code>StringBuilder insert(int offset, String str)</code> 在 offset 位置插入一个字符串并返回 this。</li>
+<li><code>StringBuilder insert(int offset, Char c)</code> 在 offset 位置插入一个代码单元并返回 this。</li>
+<li><code>StringBuilder delete(int startIndex, int endIndex)</code> 删除偏移量从 startIndex 到 endIndex - 1 的代码单元并返回 this。</li>
+<li><code>String toString()</code> 返回一个与构建器或缓冲器内容相同的字符串。</li>
+</ul>
+<h3 id="37">3.7 输入输出<a class="headerlink" href="#37" title="Permanent link">&para;</a></h3>
+<h4 id="_19">读取输入<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<div class="code"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.*</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * This program demonstrates console input.</span>
+<span class="cm"> * @version</span>
+<span class="cm"> * @author</span>
+<span class="cm"> * @date</span>
+<span class="cm"> */</span>
+ <span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputTest</span>
+ <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 需要构造一个 Scanner 对象，并与标准输入流 System.in 关联</span>
+        <span class="n">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+        <span class="c1">// get first input</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;What is your name? &quot;</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">in</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+        <span class="c1">// get second input</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;How old are you? &quot;</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">in</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span> <span class="c1">// 读取浮点数调用 nextDouble 方法</span>
+
+        <span class="c1">// display output on console</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&quot;, Next year, you&#39;ll be &quot;</span> <span class="o">+</span> <span class="p">(</span><span class="n">age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+    <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+
+
+<p>Scanner 类的输入是可见的，不适用于从控制台读取密码。Java SE 6 引入了 Console 类来实现这个目的。<em>为了安全起见，返回的密码存放在一维字符数组中，而不是字符串中。在对密码进行处理后，应该马上用一个填充值覆盖数组元素。</em>采用 Console 对象处理输入不如 Scanner 方便，每次只能读取一行输入，而没有能够读取一个单词或一个数值的方法。</p>
+<div class="code"><pre><span></span><span class="n">Console</span> <span class="n">cons</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">console</span><span class="p">();</span>
+<span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">cons</span><span class="p">.</span><span class="na">readLine</span><span class="p">(</span><span class="s">&quot;User name: &quot;</span><span class="p">);</span>
+<span class="kt">char</span><span class="o">[]</span> <span class="n">password</span> <span class="o">=</span> <span class="n">cons</span><span class="p">.</span><span class="na">readPassword</span><span class="p">(</span><span class="s">&quot;Password: &quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<ul>
+<li>了解 java.util.Scanner 类 5.0</li>
+<li>了解 java.lang.System 类 1.0</li>
+<li>了解 java.io.Console 类 6.0</li>
+</ul>
+<h4 id="_20">格式化输出<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<h4 id="_21">文件输入与输出<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<h3 id="38">3.8 控制流程<a class="headerlink" href="#38" title="Permanent link">&para;</a></h3>
+<h4 id="_22">块作用域<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<h4 id="_23">条件语句<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<h4 id="_24">循环<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<h4 id="_25">确定循环<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<h4 id="switch">多重选择：switch 语句<a class="headerlink" href="#switch" title="Permanent link">&para;</a></h4>
+<h4 id="break">中断控制流程语句 break<a class="headerlink" href="#break" title="Permanent link">&para;</a></h4>
+<h3 id="39">3.9 大数值<a class="headerlink" href="#39" title="Permanent link">&para;</a></h3>
+<h3 id="310">3.10 数组<a class="headerlink" href="#310" title="Permanent link">&para;</a></h3>
+<h4 id="for-each">for each 循环<a class="headerlink" href="#for-each" title="Permanent link">&para;</a></h4>
+<h4 id="_26">数组初始化以及匿名数组<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<h4 id="_27">数组拷贝<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<h4 id="_28">命令行参数<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<h4 id="_29">数组排序<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<h4 id="_30">多维数组<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<h4 id="_31">不规则数组<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<hr />
+<h2 id="4">第 4 章 对象与类<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 面向对象程序设计概述<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<h3 id="42">4.2 使用预定义类<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<h3 id="43">4.3 用户自定义类<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<h3 id="44">4.4 静态域与静态方法<a class="headerlink" href="#44" title="Permanent link">&para;</a></h3>
+<h3 id="45">4.5 方法参数<a class="headerlink" href="#45" title="Permanent link">&para;</a></h3>
+<h3 id="46">4.6 对象构造<a class="headerlink" href="#46" title="Permanent link">&para;</a></h3>
+<h3 id="47">4.7 包<a class="headerlink" href="#47" title="Permanent link">&para;</a></h3>
+<h3 id="48">4.8 类路径<a class="headerlink" href="#48" title="Permanent link">&para;</a></h3>
+<h3 id="49">4.9 文档注释<a class="headerlink" href="#49" title="Permanent link">&para;</a></h3>
+<h3 id="410">4.10 类设计技巧<a class="headerlink" href="#410" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="5">第 5 章 继承<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="51">5.1 类、超类和子类<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<h3 id="52-object">5.2 Object：所有类的超类<a class="headerlink" href="#52-object" title="Permanent link">&para;</a></h3>
+<h3 id="53">5.3 泛型数组列表<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<h3 id="54">5.4 对象包装器与自动装箱<a class="headerlink" href="#54" title="Permanent link">&para;</a></h3>
+<h3 id="55">5.5 参数数量可变的方法<a class="headerlink" href="#55" title="Permanent link">&para;</a></h3>
+<h3 id="56">5.6 枚举类<a class="headerlink" href="#56" title="Permanent link">&para;</a></h3>
+<h3 id="57">5.7 反射<a class="headerlink" href="#57" title="Permanent link">&para;</a></h3>
+<h3 id="58">5.8 继承的设计技巧<a class="headerlink" href="#58" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="6-lambda">第 6 章 接口、lambda 表达式与内部类<a class="headerlink" href="#6-lambda" title="Permanent link">&para;</a></h2>
+<h3 id="61">6.1 接口<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
+<h3 id="62">6.2 接口示例<a class="headerlink" href="#62" title="Permanent link">&para;</a></h3>
+<h3 id="63-lambda">6.3 lambda 表达式<a class="headerlink" href="#63-lambda" title="Permanent link">&para;</a></h3>
+<h3 id="64">6.4 内部类<a class="headerlink" href="#64" title="Permanent link">&para;</a></h3>
+<h3 id="65">6.5 代理<a class="headerlink" href="#65" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="7">第 7 章 异常、断言和日志<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h3 id="71">7.1 处理错误<a class="headerlink" href="#71" title="Permanent link">&para;</a></h3>
+<h3 id="72">7.2 捕获异常<a class="headerlink" href="#72" title="Permanent link">&para;</a></h3>
+<h3 id="73">7.3 使用异常机制的技巧<a class="headerlink" href="#73" title="Permanent link">&para;</a></h3>
+<h3 id="74">7.4 使用断言<a class="headerlink" href="#74" title="Permanent link">&para;</a></h3>
+<h3 id="75">7.5 记录日志<a class="headerlink" href="#75" title="Permanent link">&para;</a></h3>
+<h3 id="76">7.6 调试技巧<a class="headerlink" href="#76" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="8">第 8 章 泛型程序设计<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h3 id="81">8.1 为什么要使用泛型程序设计<a class="headerlink" href="#81" title="Permanent link">&para;</a></h3>
+<h3 id="82">8.2 定义简单泛型类<a class="headerlink" href="#82" title="Permanent link">&para;</a></h3>
+<h3 id="83">8.3 泛型方法<a class="headerlink" href="#83" title="Permanent link">&para;</a></h3>
+<h3 id="84">8.4 类型变量的限定<a class="headerlink" href="#84" title="Permanent link">&para;</a></h3>
+<h3 id="85">8.5 泛型代码和虚拟机<a class="headerlink" href="#85" title="Permanent link">&para;</a></h3>
+<h3 id="86">8.6 约束与局限性<a class="headerlink" href="#86" title="Permanent link">&para;</a></h3>
+<h3 id="87">8.7 泛型类型的集成规则<a class="headerlink" href="#87" title="Permanent link">&para;</a></h3>
+<h3 id="88">8.8 通配符类型<a class="headerlink" href="#88" title="Permanent link">&para;</a></h3>
+<h3 id="89">8.9 反射和泛型<a class="headerlink" href="#89" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="9">第 9 章 集合<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<h3 id="91-java">9.1 Java 集合框架<a class="headerlink" href="#91-java" title="Permanent link">&para;</a></h3>
+<h3 id="92">9.2 具体的集合<a class="headerlink" href="#92" title="Permanent link">&para;</a></h3>
+<h3 id="93">9.3 映射<a class="headerlink" href="#93" title="Permanent link">&para;</a></h3>
+<h3 id="94">9.4 视图与包装器<a class="headerlink" href="#94" title="Permanent link">&para;</a></h3>
+<h3 id="95">9.5 算法<a class="headerlink" href="#95" title="Permanent link">&para;</a></h3>
+<h3 id="96">9.6 遗留的集合<a class="headerlink" href="#96" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="13-java">第 13 章 部署 Java 应用程序<a class="headerlink" href="#13-java" title="Permanent link">&para;</a></h2>
+<h3 id="131-jar">13.1 JAR 文件<a class="headerlink" href="#131-jar" title="Permanent link">&para;</a></h3>
+<h3 id="132">13.2 应用首选项的存储<a class="headerlink" href="#132" title="Permanent link">&para;</a></h3>
+<h3 id="133">13.3 服务加载器<a class="headerlink" href="#133" title="Permanent link">&para;</a></h3>
+<h3 id="134-applet">13.4 applet<a class="headerlink" href="#134-applet" title="Permanent link">&para;</a></h3>
+<h3 id="135-java-web-start">13.5 Java Web Start<a class="headerlink" href="#135-java-web-start" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="14">第 14 章 并发<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
+<h3 id="141">14.1 什么事线程<a class="headerlink" href="#141" title="Permanent link">&para;</a></h3>
+<h3 id="142">14.2 中断线程<a class="headerlink" href="#142" title="Permanent link">&para;</a></h3>
+<h3 id="143">14.3 线程状态<a class="headerlink" href="#143" title="Permanent link">&para;</a></h3>
+<h3 id="144">14.4 线程属性<a class="headerlink" href="#144" title="Permanent link">&para;</a></h3>
+<h3 id="145">14.5 同步<a class="headerlink" href="#145" title="Permanent link">&para;</a></h3>
+<h3 id="146">14.6 阻塞队列<a class="headerlink" href="#146" title="Permanent link">&para;</a></h3>
+<h3 id="147">14.7 线程安全的集合<a class="headerlink" href="#147" title="Permanent link">&para;</a></h3>
+<h3 id="148-callable-future">14.8 Callable 与 Future<a class="headerlink" href="#148-callable-future" title="Permanent link">&para;</a></h3>
+<h3 id="149">14.9 执行器<a class="headerlink" href="#149" title="Permanent link">&para;</a></h3>
+<h3 id="1410">14.10 同步器<a class="headerlink" href="#1410" title="Permanent link">&para;</a></h3>
+<h3 id="1411-swing">14.11 线程与 Swing<a class="headerlink" href="#1411-swing" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="a-java">附录 A Java 关键字<a class="headerlink" href="#a-java" title="Permanent link">&para;</a></h2>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../spark/learning-spark/" title="Spark 快速大数据分析" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                Spark 快速大数据分析
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../slice/zuoer-ting-feng/preface/" title="开篇" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                开篇
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/mengtanx" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/mengtanx" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/in/mengtanx" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.808e90bb.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

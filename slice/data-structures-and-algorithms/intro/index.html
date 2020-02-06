@@ -1,0 +1,2225 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Momenta's Personal Notes">
+      
+      
+        <link rel="canonical" href="https://notes.mengtanx.com/slice/data-structures-and-algorithms/intro/">
+      
+      
+        <meta name="author" content="Momenta Liu">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>入门篇 - Momenta's Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-121861821-2", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://notes.mengtanx.com/" title="Momenta's Notes" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Momenta's Notes
+            </span>
+            <span class="md-header-nav__topic">
+              
+                入门篇
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://notes.mengtanx.com/" title="Momenta's Notes" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Momenta's Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      技术积淀
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        技术积淀
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../machine/machine-learning/" title="机器学习@周志华" class="md-nav__link">
+      机器学习@周志华
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      深度学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        深度学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep/deep-learning-with-python/" title="深度学习" class="md-nav__link">
+      深度学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep/gluon-tutorial/" title="动手学深度学习" class="md-nav__link">
+      动手学深度学习
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      SQL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        SQL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sql/mysql-learning-notes/" title="MySQL 学习笔记" class="md-nav__link">
+      MySQL 学习笔记
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Spark
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        Spark
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../spark/learning-spark/" title="Spark 快速大数据分析" class="md-nav__link">
+      Spark 快速大数据分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5">
+    
+    <label class="md-nav__link" for="nav-2-5">
+      Java
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-5">
+        Java
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../code/core-java/" title="Java 核心技术 第 10 版笔记" class="md-nav__link">
+      Java 核心技术 第 10 版笔记
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      碎片知识
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        碎片知识
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
+    
+    <label class="md-nav__link" for="nav-3-1">
+      订阅专栏
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        订阅专栏
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-1" type="checkbox" id="nav-3-1-1">
+    
+    <label class="md-nav__link" for="nav-3-1-1">
+      左耳听风
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-1">
+        左耳听风
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../zuoer-ting-feng/preface/" title="开篇" class="md-nav__link">
+      开篇
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-2" type="checkbox" id="nav-3-1-2" checked>
+    
+    <label class="md-nav__link" for="nav-3-1-2">
+      数据结构与算法之美
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-2">
+        数据结构与算法之美
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        入门篇
+      </label>
+    
+    <a href="./" title="入门篇" class="md-nav__link md-nav__link--active">
+      入门篇
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    开篇词 | 从今天起，跨过「数据结构与算法」这道坎
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    关于作者
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    你并不孤独
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    专栏定位
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01 | 为什么要学习数据结构和算法？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02 | 如何抓住重点，系统高效地学习数据结构与算法？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    什么是数据结构？什么是算法？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    学习这个专栏需要什么基础？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    学习的重点在什么地方？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    一些可以让你事半功倍的学习技巧
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    内容小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    课后思考
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03 | 复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    为什么需要复杂度分析？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o" class="md-nav__link">
+    大 O 复杂度表示法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    时间复杂度分析
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 只关注循环执行次数最多的一段代码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 加法法则：总复杂度等于量级最大的那段代码的复杂度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    几种常见的时间复杂度实例分析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    空间复杂度分析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    内容小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    课后思考
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    精选留言
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04 | 复杂度分析（下）：详解最好、最坏、平均、均摊复杂度分析
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    最好、最坏情况时间复杂度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    平均情况时间复杂度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    均摊时间复杂度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    内容小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    课后思考
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    周末福利第一期 | 数据结构与算法学习书单
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    针对入门的趣味书
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    针对特定编程语言的教科书
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    面试必刷的宝典
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    经典大部头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    殿堂级经典
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    闲暇阅读
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../foundation/" title="基础篇" class="md-nav__link">
+      基础篇
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../advanced/" title="高级篇" class="md-nav__link">
+      高级篇
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../practice/" title="实战篇" class="md-nav__link">
+      实战篇
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-3" type="checkbox" id="nav-3-1-3">
+    
+    <label class="md-nav__link" for="nav-3-1-3">
+      人工智能基础课
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-3">
+        人工智能基础课
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai-foundation/math-basic/" title="数学基础" class="md-nav__link">
+      数学基础
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-4" type="checkbox" id="nav-3-1-4">
+    
+    <label class="md-nav__link" for="nav-3-1-4">
+      在线教程
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-4">
+        在线教程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-4-1" type="checkbox" id="nav-3-1-4-1">
+    
+    <label class="md-nav__link" for="nav-3-1-4-1">
+      机器学习算法各个击破
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
+      <label class="md-nav__title" for="nav-3-1-4-1">
+        机器学习算法各个击破
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../machine-learning-algorithms/machine-learning-basics/" title="机器学习基础知识" class="md-nav__link">
+      机器学习基础知识
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      数据科学
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        数据科学
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../data/analysis/python-data-science-handbook/" title="Python 数据科学手册" class="md-nav__link">
+      Python 数据科学手册
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../data/analysis/game-data-analysis/" title="游戏数据分析的艺术" class="md-nav__link">
+      游戏数据分析的艺术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../data/analysis/dataization-management/" title="数据化管理" class="md-nav__link">
+      数据化管理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      关于
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        关于
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/release-notes/" title="更新记录" class="md-nav__link">
+      更新记录
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    开篇词 | 从今天起，跨过「数据结构与算法」这道坎
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    关于作者
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    你并不孤独
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    专栏定位
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01 | 为什么要学习数据结构和算法？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02 | 如何抓住重点，系统高效地学习数据结构与算法？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    什么是数据结构？什么是算法？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    学习这个专栏需要什么基础？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    学习的重点在什么地方？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    一些可以让你事半功倍的学习技巧
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    内容小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    课后思考
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03 | 复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    为什么需要复杂度分析？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o" class="md-nav__link">
+    大 O 复杂度表示法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    时间复杂度分析
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 只关注循环执行次数最多的一段代码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 加法法则：总复杂度等于量级最大的那段代码的复杂度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    几种常见的时间复杂度实例分析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    空间复杂度分析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    内容小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    课后思考
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    精选留言
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04 | 复杂度分析（下）：详解最好、最坏、平均、均摊复杂度分析
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    最好、最坏情况时间复杂度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    平均情况时间复杂度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    均摊时间复杂度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    内容小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    课后思考
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    周末福利第一期 | 数据结构与算法学习书单
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    针对入门的趣味书
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    针对特定编程语言的教科书
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    面试必刷的宝典
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    经典大部头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    殿堂级经典
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    闲暇阅读
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">入门篇<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>为工程师量身打造的数据结构与算法私教课</p>
+</blockquote>
+<p><img alt="" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20180924114946.png" /></p>
+<h2 id="_2">开篇词 | 从今天起，跨过「数据结构与算法」这道坎<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>9 月 21 日起正式更新，每周一三五更新</li>
+<li>每节课开篇都有思考题，课后也会有思考题</li>
+<li>池建强：数据结构和算法是程序员的金线，一个普通程序员和一个优质高潜程序员的永远区分线。</li>
+</ul>
+<h3 id="_3">关于作者<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>王争：毕业于西安交通大学计算机专业，前 Google 工程师。</li>
+<li>学习数据结构与算法的经历：研究生时，<strong>对算法的「迷恋」一发不可收拾，并如饥似渴</strong>地把图书馆里几乎所有数据结构和算法的书籍都读了一遍。</li>
+<li><strong>常常边读边练。</strong>久而久之，写代码时会考虑到性能方面的问题，算法和编程能力都有了质的飞跃。</li>
+<li>得益于此，研究生毕业后，进入 Google 从事 Google 翻译相关的开发工作。</li>
+</ul>
+<h3 id="_4">你并不孤独<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>你可能的情况</p>
+<ul>
+<li>从学校开始，就觉得数据结构难学，然后一直也没认真学？</li>
+<li>工作中，一遇到数据结构又自发本能地迅速避让，看起来无关大局？</li>
+<li>工作面试时，发现自己的基础跟不上别人的节奏？</li>
+</ul>
+</li>
+<li>
+<p>沉下心打基础</p>
+</li>
+</ul>
+<p>腾讯 T4 的技术大牛，在腾讯工作了 10 多年，长期负责收集 QQ 后台整体建设。经历了手机 QQ 从诞生到亿级用户在线的整个过程。后来去微众银行做区块链，不到半年就摸清楚了整个技术脉络。如今，他已是微众银行的区块链负责人，微众科技创新产品的老总。</p>
+<p>他发现，那些所谓的新技术，核心和本质的东西其实就是当初学的那些只是。掌握了这个「规律」之后，他学任何东西都很快，任何新技术都能快速迎头赶上。这就是他快速学习并且获得成功的秘诀。<strong>基础知识就像是一座大楼的地基，它决定了我们的技术高度。而要想快速做出点事情，前提条件一定是基础能力过硬，「内功」要到位。</strong></p>
+<h3 id="_5">专栏定位<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>现状<ul>
+<li>经典书籍如《算法导论》，虽然很全面，但是过于理论，学起来非常枯燥；</li>
+<li>很多课程大多缺乏真实的开发场景，费劲学完感觉好像还是用不上，过不了几天就忘了。</li>
+</ul>
+</li>
+<li>专栏尝试<ul>
+<li>做一个让你能真正受用的数据结构与算法课程。希望给你指明一个简洁、高效的学习路径，教你一个学习基础知识的通用方法。</li>
+</ul>
+</li>
+<li>专栏设计<ol>
+<li>根据研读数十本算法书籍和多年项目开发的经验，在众多的数据结构和算法中，精选了最实用的内容进行讲解</li>
+<li>不只会教你怎么用，还会告诉你我们为什么需要这种数据结构和算法，一点一点帮你捋清他们背后的设计思想，培养你举一反三的能力。</li>
+<li>对于每种数据结构和算法，都会结合真实的软件开发案例来讲解，让你知道，数据结构和算法，究竟应该如何应用到实际的编码中。</li>
+</ol>
+</li>
+<li>模块<ul>
+<li>入门篇：时间和空间复杂度分析 <strong>2节</strong><ul>
+<li>掌握时间和空间复杂度的概念</li>
+<li>大 O 表示法的由来</li>
+<li>各种复杂度分析技巧</li>
+<li>最好、最坏、平均和均摊复杂度分析方法</li>
+</ul>
+</li>
+<li>基础篇：专栏中篇幅最大的内容，学习重点 <strong>26节</strong></li>
+<li>高级篇：讲述不太常用的数据结构和算法，开拓视野，强化训练算法思维和逻辑思维</li>
+<li>实战篇：围绕数据结构和算法再具体软件实践中的应用来讲的，通过实战部分串讲前面的数据结构和算法。通过一些开源项目、框架或者系统设计问题，剖析它们背后的数据结构和算法。</li>
+</ul>
+</li>
+</ul>
+<p>人生路上，我们会遇到很多的坎。跨过去，你就可以成长，跨不过去就是困难和停滞。<strong>既然数据结构和算法这个坎，我们总归要跨过去，为什么不是现在呢？</strong></p>
+<h2 id="01">01 | 为什么要学习数据结构和算法？<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<ul>
+<li>想要通关大厂面试，千万别让数据结构和算法拖了后腿<ul>
+<li>不管是校招还是社招，越是厉害的公司，越是注重考查数据结构与算这类基础知识。</li>
+<li>我们学习任何知识都是为了「用」的，是为了解决实际工作问题的。</li>
+</ul>
+</li>
+<li>业务开发工程师，你真的愿意做一辈子 CRUD boy 吗？<ul>
+<li>作为业务开发工程师，大多数都只是调用封装好的接口、类库来堆砌代码，翻译业务逻辑。<strong>很少需要自己实现数据结构和算法，但不需要自己实现，并不代表什么都不需要了解。</strong></li>
+<li>如果不懂这些类库背后的原理，不懂得时间和空间复杂度分析，你如恶化能用好、用对它们？如何选用更合适的数据结构，如何评估代码的性能和资源的小号呢？</li>
+<li>在业务开发所用到的各种框架、中间件和底层系统如 Spring、RPC 框架、消息中间件、Redis 等。<strong>这些基础框架中，一般都糅合了很多基础数据结构和算法的设计思想。</strong></li>
+<li>如常用的 Key-Value 数据库 Redis 中，有序集合是用什么数据结构来实现的呢？为什么要用跳表来实现呢？为什么不用二叉树呢？</li>
+<li>若你能弄明白这些底层原理，你就能更好地使用它们。掌握数据结构和算法，不管对于阅读框架源码，还是理解其背后的设计思想，都是非常有用的。</li>
+</ul>
+</li>
+<li>基础架构研发工程师，写出达到开源水平的框架才是你的目标<ul>
+<li>不同的公司、不同的人做出的 RPC 框架，架构设计思路都差不多，最后实现的功能也都差不多。但有些人做出来的框架，Bug 很多、性能一般，扩展性也不好，而有的人做的框架可以开源到 GitHub 上给很多人用，甚至被 Apache 收录。</li>
+<li>高手之间的竞争其实就在细节。这些细节包括：你用的算法是不是够优化数据存储的效率是不是够高，内存是不是够节省等等。</li>
+</ul>
+</li>
+<li>对编程还有追求？不想被行业淘汰？那就不要只会写凑合能用的代码<ul>
+<li>何为编程能力强？</li>
+<li>有的人写代码的时候，从来都不考虑非功能性的需求，只是完成功能，凑合能用就好，做事情的时候，也从来没有长远规划，只把眼前的事情做好就满足了。</li>
+<li>数据结构和算法，如果你不去学，可能真的这辈子都用不到，也感受不到它的好。</li>
+</ul>
+</li>
+<li><strong>内容小结</strong><ul>
+<li>学习数据结构和算法，并不是为了死记硬背几个知识点。我们需要建立时间和空间复杂度意识，写出高质量的代码，能够设计基础架构，提升编程技能，训练逻辑思维，积攒人生经验，以此获得工作汇报，实现你的价值，完善你的人生。</li>
+<li><strong>掌握了数据结构和算法，你看待问题的深度，解决问题的角度就会完全不一样。</strong>数据结构与算法，会为你的编程之路，甚至人生之路打开一扇通往新世界的大门。</li>
+</ul>
+</li>
+<li>
+<p>课后思考</p>
+<ul>
+<li>你为什么要学习数据结构和算法呢？的过去的软件开发中，数据结构和算法在哪些地方帮到了你？</li>
+</ul>
+</li>
+<li>
+<p>精选留言</p>
+<ul>
+<li>为什么学习数据结构和算法？<ol>
+<li>能够写出性能更优的代码</li>
+<li>算法是一种解决问题的思路和方法，有机会应用到生活和事业的其他方面</li>
+<li>长期来看，大脑思考能力是个人最重要的核心竞争力，而算法是为数不多的能够有效训练大脑思考能力的途径之一。</li>
+</ol>
+</li>
+<li>一定要动手写。</li>
+<li>学技术必须要拿出十年磨一剑的精神，从头开始。</li>
+</ul>
+</li>
+</ul>
+<h2 id="02">02 | 如何抓住重点，系统高效地学习数据结构与算法？<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<p>实际上，数据结构和算法的东西并不多，常用的、基础的知识点更是屈指可数。只要掌握了正确的学习方法，学起来并没有看出去那么难，更不需要什么高智商、后弟子。</p>
+<h3 id="_6">什么是数据结构？什么是算法？<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>从广义上讲，数据结构就是指一组数据的存储结构。算法就是操作数据的一组方法。</li>
+<li>从狭义上讲，是指某些著名的数据结构和算法，比如队列、栈、堆、二分查找、动态规划等。</li>
+<li>数据结构和算法是相辅相成的。数据结构是为算法服务的，算法要作用在特定的数据结构之上。</li>
+</ul>
+<h3 id="_7">学习这个专栏需要什么基础？<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>只要有高中数学水平就完全可以学习。</li>
+<li>最好有些编程基础，如果有项目经验就更好。</li>
+<li>对于每个概念和实现过程，都会从实际场景出发， 不仅教你「是什么」，还会教你「为什么」，并且告诉你遇到同类型问题应该「怎么做」。</li>
+</ul>
+<h3 id="_8">学习的重点在什么地方？<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>梳理一下，应该先学什么，后学什么。可以对照看看，你属于哪个阶段，然后有针对地进行学习。</p>
+</blockquote>
+<ul>
+<li>首先要掌握一个数据结构与算法中最重要的概念：<strong>复杂度分析</strong>。<ul>
+<li>几乎占了数据结构和算法这门课的半壁江山，是数据结构和算法学习的精髓。</li>
+<li>复杂度分析会用很大篇幅来讲透，你也一定要花大力气来啃，必须要拿下，并且要搞得非常熟练，否则后面的内容也很难学好。</li>
+</ul>
+</li>
+<li>数据结构和算法知识点导图<ul>
+<li>复杂度分析<ul>
+<li>空间复杂度</li>
+<li>时间复杂度<ul>
+<li>最好</li>
+<li>最坏</li>
+<li>平均</li>
+<li>均摊</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基本算法思想<ul>
+<li>贪心算法</li>
+<li>分治算法</li>
+<li>动态规划</li>
+<li>回溯算法</li>
+<li>枚举算法</li>
+</ul>
+</li>
+<li>排序<ul>
+<li><span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span><ul>
+<li>冒泡排序</li>
+<li>插入排序</li>
+<li>选择排序</li>
+<li>希尔排序</li>
+</ul>
+</li>
+<li><span><span class="MathJax_Preview">O(nlog(n))</span><script type="math/tex">O(nlog(n))</script></span><ul>
+<li>归并排序</li>
+<li>快速排序</li>
+<li>堆排序</li>
+<li>二叉排序树排序</li>
+</ul>
+</li>
+<li><span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span><ul>
+<li>计数排序</li>
+<li>基数排序</li>
+<li>桶排序</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>搜索<ul>
+<li>深度优先搜索 DFS</li>
+<li>广度优先搜索 BFS</li>
+<li><span><span class="MathJax_Preview">A^*</span><script type="math/tex">A^*</script></span> 启发式搜索</li>
+</ul>
+</li>
+<li>查找<ul>
+<li>线性表查找</li>
+<li>树结构查找</li>
+<li>散列表查找</li>
+</ul>
+</li>
+<li>线性表<ul>
+<li>数组</li>
+<li>链表<ul>
+<li>单向链表</li>
+<li>双向链表</li>
+<li>循环链表</li>
+<li>双向循环链表</li>
+<li>静态链表</li>
+</ul>
+</li>
+<li>栈<ul>
+<li>顺序栈</li>
+<li>链式栈</li>
+</ul>
+</li>
+<li>队列<ul>
+<li>普通队列</li>
+<li>双端队列</li>
+<li>阻塞队列</li>
+<li>并发队列</li>
+<li>阻塞并发队列</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>散列表<ul>
+<li>散列函数</li>
+<li>冲突解决<ul>
+<li>链表法</li>
+<li>开发寻址</li>
+<li>其他</li>
+</ul>
+</li>
+<li>动态扩容</li>
+<li>位图</li>
+</ul>
+</li>
+<li>树<ul>
+<li>二叉树<ul>
+<li>平衡二叉树</li>
+<li>二叉查找树</li>
+<li>平衡二叉查找树<ul>
+<li>AVL 树</li>
+<li>红黑树</li>
+</ul>
+</li>
+<li>完全二叉树</li>
+<li>满二叉树</li>
+</ul>
+</li>
+<li>多路查找树<ul>
+<li>B 树</li>
+<li>B+ 树</li>
+<li>2-3 树</li>
+<li>2-3-4 树</li>
+</ul>
+</li>
+<li>堆<ul>
+<li>小顶堆</li>
+<li>大顶堆</li>
+<li>优先级队列</li>
+<li>斐波那契堆</li>
+<li>二项堆</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>字符串匹配<ul>
+<li>朴素</li>
+<li>KMP</li>
+<li>Robin-Karp</li>
+<li>Boyer-Moore</li>
+<li>AC 自动机</li>
+<li>Trie</li>
+</ul>
+</li>
+<li>其他<ul>
+<li>数论</li>
+<li>计算几何</li>
+<li>概率分析</li>
+<li>并查集</li>
+<li>拓扑网络</li>
+<li>矩阵运算</li>
+<li>线性规划</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>作为初学者，或一个非算法工程师来说，你并不需要掌握图里面的所有知识点。很多高级的数据结构和算法，如二分图、最大流等，这些在平常开发中很少会用到。所以，你暂时可以不用看。**学习要学会找重点。如果不分重点地学习，眉毛胡子一把抓，学起来肯定会被比较吃力。</p>
+<p>结合学习心得、多年的面试和开发经验，总结了 20 个最常用的、最基础的数据结构算法，<strong>不管是应付面试还是工作需要，只要集中精力逐一攻克这 20 个知识点就足够了。</strong></p>
+<ul>
+<li>10 个数据结构：数组、链表、栈、队列、散列表、二叉树、堆、跳表、图、Trie 树。</li>
+<li>10 个算法：递归、排序、二分查找、搜索、哈希算法、贪心算法、分治算法、回溯算法、动态规划、字符串匹配算法。</li>
+</ul>
+<p>在学习数据结构和算法的过程中，你也要注意，不要只是死记硬背，不要为了学习而学习，而是<strong>要学习它的「来历」、「自身的特点」、「适合解决的问题」以及「实际的应用场景」</strong>。</p>
+<p>学习数据结构和算法的过程，是非常好的思维训练的过程，所以，千万不要被动地记忆，要多辩证地思考，多问为什么。</p>
+<h3 id="_9">一些可以让你事半功倍的学习技巧<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>边写边练，适度刷题。</strong><ul>
+<li>建议每周花 1-2 个小时的时间，集中把这周的三节内容涉及的数据结构和算法，全都自己写出来，用代码实现一遍。</li>
+<li><strong>可以「适度」刷题，但一定不要浪费太多时间在刷题上。</strong>我们学习的目的还是掌握，然后应用。</li>
+<li>只有面试 FLAG 这样的工程，它们的算法题目非常非常难的，必须大量刷题，才能在短期内提升应试正确率。</li>
+</ul>
+</li>
+<li><strong>多问、多思考、多互动</strong><ul>
+<li>学习最好的方法是，找到几个人一起学习，一块儿讨论切磋，有问题及时寻求老师答疑。</li>
+</ul>
+</li>
+<li><strong>打怪升级学习法</strong><ul>
+<li>学习的过程中，碰到的最大问题就是坚持不下来。</li>
+<li>在枯燥的学习过程中，也可以给自己设立一个切实可行的目标，就像打怪升级一样。</li>
+<li>如每节课后都写一篇学习笔记或新的，也可以尝试找出每节课中讲的不对、不合理的地方</li>
+</ul>
+</li>
+<li><strong>知识需要沉淀，不要想试图一下子掌握所有</strong><ul>
+<li>想听一遍、看一遍就把所有知识点掌握，这肯定是不可能的。**学习知识的过程是反复迭代、不断沉淀的过程。</li>
+</ul>
+</li>
+</ul>
+<h3 id="_10">内容小结<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>划了数据结构和算法的学习重点，复杂度分析，以及 10 个数据结构和 10 个算法</li>
+<li>分享了一些学习技巧和方法：边学边练、多问、多思考，打怪升级和沉淀法</li>
+<li>最重要的就是：一定要好好实践。</li>
+</ul>
+<h3 id="_11">课后思考<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>对照上面讲的「打怪升级学习法」，思考一下你自己学习这个专栏的方法。</li>
+<li>另外，在之前学习数据结构和算法的过程中，遇到过什么样的困难和疑惑吗？</li>
+</ul>
+<h2 id="03">03 | 复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20180927103600.png" /></p>
+<p>数据结构和算法本身解决的是「快」和「省」的问题，即如何让代码运行得更快，如何让代码更省存储空间。所以，执行效率是算法的一个非常重要的考量指标。<strong>复杂度分析是整个算法学习的精髓，只要掌握了它，数据结构和算法的内容基本上就掌握了一半。</strong></p>
+<h3 id="_12">为什么需要复杂度分析？<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>思考为什么不直接把代码跑一遍，然后通过统计、监控，就能得到算法执行的时间和占用的内存大小。这种评估算法执行效率的方法是正确的，被称为<strong>事后统计法</strong>，但是有非常大的局限性。</p>
+<ol>
+<li>测试结果非常依赖测试环境：测试环境中硬件的不同会对测试结果有很大的影响。</li>
+<li>测试结果手数据规模的影响很大：如对于小规模的数据排序，插入排序可能反倒会比快速排序要快。</li>
+</ol>
+<p>所以，<strong>我们需要一个不用具体的测试数据来测试，就可以粗略地估计算法的执行效率的方法。</strong>这就是时间和空间复杂度分析法。</p>
+<h3 id="o">大 O 复杂度表示法<a class="headerlink" href="#o" title="Permanent link">&para;</a></h3>
+<p>算法的执行效率，粗略来讲，就是算法代码执行的时间。</p>
+<div class="code"><pre><span></span><span class="kt">int</span> <span class="nf">cal</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>从 CPU 的角度来看，以上代码的每一行都执行着类似读数据 -&gt; 运算 -&gt; 写数据的操作。虽然每行代码对应的 CPU 执行的个数和执行的时间都不一样，但若只是粗略估计的话，可以假设每行代码执行的时间都一样，为一个单位时间（unit_time）。在这个假设的基础上， 可以估算上述代码的总执行时间。</p>
+<ul>
+<li>第 2、3 行代码分别需要 1 个 unit_time 的执行时间</li>
+<li>第 4、5 行代码都运行了 n 遍，所以需要 2n 个 unit_time 的执行时间</li>
+<li>代码的总执行时间就是 <span><span class="MathJax_Preview">T(n)=O(2n+2)</span><script type="math/tex">T(n)=O(2n+2)</script></span> 个 unit_time。</li>
+</ul>
+<p>由上可以看出，<strong>所有代码的执行时间 T(n) 与每行代码的执行次数成正比。</strong></p>
+<div class="code"><pre><span></span><span class="kt">int</span> <span class="nf">cal</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">j</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>第 2、3、4 行代码，每行代码都需要 1 个 unit_time 的执行时间</li>
+<li>第 5、6 行代码循环执行了 n 遍，需要 2n 个 unit_time 的执行时间</li>
+<li>第 7、8 行代码循环执行了 <span><span class="MathJax_Preview">n^2</span><script type="math/tex">n^2</script></span> 遍，需要 <span><span class="MathJax_Preview">2n^2</span><script type="math/tex">2n^2</script></span> 个 unit_time 的执行时间</li>
+<li>整段代码总的执行时间 <span><span class="MathJax_Preview">T(n) = O(2n^2+2n+3)</span><script type="math/tex">T(n) = O(2n^2+2n+3)</script></span> 个 unit_time。</li>
+</ul>
+<p>由以上两段代码执行时间的推导过程，我们可以得到一个非常重要的规律：<strong>所有代码的执行时间 T(n) 与每行代码的执行次数 n 成正比。</strong>将这个规律总结成一个公式即：</p>
+<div>
+<div class="MathJax_Preview">T(n) = O(f(n))</div>
+<script type="math/tex; mode=display">T(n) = O(f(n))</script>
+</div>
+<p>其中，T(n) 表示代码执行的时间；n 表示数据规模的大小；f(n) 表示每行代码执行的次数综合。O 表示代码的执行时间 T(n) 与表达式 f(n) 成正比。</p>
+<p>以上就是<strong>大 O 时间复杂度表示法</strong>，实际上它并不具体表示代码真正的执行时间，而是表示<strong>代码执行时间随数据规模增长的变化趋势</strong>。所以也叫做<strong>渐进时间复杂度（Asymptotic Time Complexity），简称时间复杂度</strong>。</p>
+<p>当 n 很大时，公式中的低阶、常量、系数三部分并不左右增长趋势，所以都可以忽略。我们只需要记录一个最大量级即可。用大 O 表示法来分别表示上述两段代码的时间复杂度，就可以记为：<span><span class="MathJax_Preview">T(n) = O(n)</span><script type="math/tex">T(n) = O(n)</script></span>，<span><span class="MathJax_Preview">T(n) = O(n^2)</span><script type="math/tex">T(n) = O(n^2)</script></span>。</p>
+<h3 id="_13">时间复杂度分析<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>如何分析一段代码的时间复杂度呢？以下有三个非常实用的方法：</p>
+<h4 id="1">1. 只关注循环执行次数最多的一段代码<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p>在分析一个算法、一段代码的时间复杂度的时候，也只关注循环次数最多的那一段代码即可。这段核心代码执行次数的 n 的量级，就是整段要分析代码的时间复杂度。</p>
+<h4 id="2">2. 加法法则：总复杂度等于量级最大的那段代码的复杂度<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<div class="code"><pre><span></span><span class="kt">int</span> <span class="nf">cal</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum_1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="o">++</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum_1</span> <span class="o">=</span> <span class="n">sum_1</span> <span class="o">+</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">sum_2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">q</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">q</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum_2</span> <span class="o">=</span> <span class="n">sum_2</span> <span class="o">+</span> <span class="n">q</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">sum_3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sum_3</span> <span class="o">=</span> <span class="n">sum_3</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">j</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">sum_1</span> <span class="o">+</span> <span class="n">sum_2</span> <span class="o">+</span> <span class="n">sum_3</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>综合分析以上三段代码的时间复杂度（依次为 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>, <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>, <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span>），取其中最大的量级即可得到整段代码的时间复杂度为 <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span>。<strong>也就是说，总的时间复杂度等于量级最大的那段代码的时间复杂度。</strong>将这个规律抽象成公式就是：</p>
+<ul>
+<li>如果 <span><span class="MathJax_Preview">T_1(n) = O(f(n)), T_2(n) = O(g(n))</span><script type="math/tex">T_1(n) = O(f(n)), T_2(n) = O(g(n))</script></span></li>
+<li>那么 <span><span class="MathJax_Preview">T(n) = T_1(n) + T_2(n) = max(O(f(n)), O(g(n))) = O(max(f(n), g(n)))</span><script type="math/tex">T(n) = T_1(n) + T_2(n) = max(O(f(n)), O(g(n))) = O(max(f(n), g(n)))</script></span></li>
+</ul>
+<h4 id="3">3. 乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>如果 <span><span class="MathJax_Preview">T_1(n) = O(f(n)), T_2(n) = O(g(n))</span><script type="math/tex">T_1(n) = O(f(n)), T_2(n) = O(g(n))</script></span></li>
+<li>那么 <span><span class="MathJax_Preview">T(n) = T_1(n) * T_2(n) = O(f(n)) * O(g(n)) = O(f(n) * g(n))</span><script type="math/tex">T(n) = T_1(n) * T_2(n) = O(f(n)) * O(g(n)) = O(f(n) * g(n))</script></span></li>
+</ul>
+<p>落实到具体的代码上，可以把乘法法则看成是<strong>嵌套循环</strong>。如下代码所示：</p>
+<div class="code"><pre><span></span><span class="kt">int</span> <span class="nf">cal</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">f</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>以上代码中 <code>cal()</code> 函数的时间复杂度就是 <span><span class="MathJax_Preview">T(n) = T_1(n) * T_2(n) = O(n * n) = O(n^2)</span><script type="math/tex">T(n) = T_1(n) * T_2(n) = O(n * n) = O(n^2)</script></span>。</p>
+<p>以上所讲到的三种复杂度的分析技巧，并不用可以记忆，复杂度分析关键在于「熟练」，只要多看案例，多分析，就能做到「无招胜有招」。</p>
+<h3 id="_14">几种常见的时间复杂度实例分析<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20180927160205.png" /></p>
+<p>对于以上的复杂度量级，可以粗略地分为两类：<strong>多项式量级和非多项式量级</strong>。其中，非多项式量级只有两个：<span><span class="MathJax_Preview">O(2^n)</span><script type="math/tex">O(2^n)</script></span> 和 <span><span class="MathJax_Preview">O(n!)</span><script type="math/tex">O(n!)</script></span>。</p>
+<p>我们把时间复杂度为非多项式量级的算法问题叫作 NP (Non-Deterministic Polynomial，非确定多项式) 问题。当数据规模 n 越来越大时，非多项式量级算法的执行时间会急剧增加，求解问题的执行时间会无限增长。因此，非多项式时间复杂度算法其实是非常低效的算法。</p>
+<ul>
+<li>常量阶 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>：只要代码的执行时间不随 n 的增长而最大，这样代码的时间复杂度都记住 $O(1)。**一般情况下，只要算法中不存在循环语句、递归语句，即使有成千上万行的代码，其时间复杂度也是 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>。</li>
+<li>对数阶 <span><span class="MathJax_Preview">O(logn)</span><script type="math/tex">O(logn)</script></span>、线性对数阶 <span><span class="MathJax_Preview">O(nlogn)</span><script type="math/tex">O(nlogn)</script></span>：对数阶时间复杂度非常常见，同时也是最难分析的一种时间复杂度。<strong>在对数阶时间复杂度的表示方法里，我们会忽略对数的「底」，统一表示为 <span><span class="MathJax_Preview">O(logn)</span><script type="math/tex">O(logn)</script></span>。</strong></li>
+</ul>
+<div class="code"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li><span><span class="MathJax_Preview">O(m+n)</span><script type="math/tex">O(m+n)</script></span>、<span><span class="MathJax_Preview">O(m*n)</span><script type="math/tex">O(m*n)</script></span>：代码的复杂度由两个数据的规模来决定。<ul>
+<li>如下段代码中，m 和 n 是表示两个数据规模，无法事先评估 m 和 n 谁的量级大，所以表示复杂度的时候不能简单地利用加法法则来省略掉其中一个，所以其时间复杂度是 <span><span class="MathJax_Preview">O(m+n)</span><script type="math/tex">O(m+n)</script></span>。</li>
+<li>原来的加法规则就需要改为：<span><span class="MathJax_Preview">T_1(m) + T_2(n) = O(f(m) + g(n))</span><script type="math/tex">T_1(m) + T_2(n) = O(f(m) + g(n))</script></span>，但是乘法法则依然有效：<span><span class="MathJax_Preview">T_1(m) * T_2(n) = O(f(m) * f(n))</span><script type="math/tex">T_1(m) * T_2(n) = O(f(m) * f(n))</script></span>.</li>
+</ul>
+</li>
+</ul>
+<div class="code"><pre><span></span><span class="kt">int</span> <span class="nf">cal</span><span class="p">(</span><span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum_1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum_1</span> <span class="o">=</span> <span class="n">sum_1</span> <span class="o">+</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">sum_2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum_2</span> <span class="o">=</span> <span class="n">sum_2</span> <span class="o">+</span> <span class="n">j</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">sum_1</span> <span class="o">+</span> <span class="n">sum_2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="_15">空间复杂度分析<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>理解了时间复杂度分析法，类似的，空间复杂度分析法就非常简单了。空间复杂度全称是<strong>渐进空间复杂度（Asymptotic Space Complexity），表示算法的存储空间与数据规模之间的增长关系。</strong></p>
+<div class="code"><pre><span></span><span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 申请空间存储变量 i，常量阶</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">;</span> <span class="c1">// 申请大小为 n 的 int 类型数组，线性阶</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">print</span> <span class="n">out</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>我们常见的空间复杂度就是 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>、<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>、<span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span>，像 <span><span class="MathJax_Preview">O(logn)</span><script type="math/tex">O(logn)</script></span>、<span><span class="MathJax_Preview">O(nlogn)</span><script type="math/tex">O(nlogn)</script></span> 这样的对数阶复杂度平时一般用不到。空间复杂度分析比时间复杂度分析要简单很多。</p>
+<h3 id="_16">内容小结<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20180927173050.png" /></p>
+<ul>
+<li>复杂度也叫渐进复杂度，包括时间复杂度和空间复杂度，用来分析算法执行效率与数据规模之间的增长关系，可以粗略地说，越高阶复杂度的算法，执行效率越低。</li>
+<li>常见的复杂度从低阶到高阶有：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>, <span><span class="MathJax_Preview">O(logn)</span><script type="math/tex">O(logn)</script></span>, <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>, <span><span class="MathJax_Preview">O(nlogn)</span><script type="math/tex">O(nlogn)</script></span>, <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span>。</li>
+<li><strong>复杂度分析并不难，关键在于多练。</strong></li>
+</ul>
+<h3 id="_17">课后思考<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>有人说，我们项目之前都会进行性能测试，再做代码的时间复杂度、空间复杂度分析，是不是多此一举呢？而且，每段代码都分析一下时间复杂度、空间复杂度，是不是很浪费时间呢？你怎么看待这个问题呢？</p>
+<h3 id="_18">精选留言<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<ul>
+<li>渐进时间复杂度、空间复杂度分析与性能基准测试并不冲突，而是相辅相成的。但低阶时间复杂度程序有极大可能性会优于高阶的时间复杂度程序，所以实际编程中，时刻关心理论时间复杂度和空间复杂度模型有助于产出效率更高的程序。重点在于编程时需要培养这种复杂度分析思维。</li>
+<li>性能测试是依附于具体环境的如 SIT、UAT 机器配置及实例数量等。复杂度分析是独立于环境的，可以大致估算出程序所执行的效率。</li>
+</ul>
+<h2 id="04">04 | 复杂度分析（下）：详解最好、最坏、平均、均摊复杂度分析<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<p>四个复杂度分析方面的知识点：最好情况时间复杂度（best case time complexity）、最坏情况时间复杂度（worst case time complexity）、平均情况时间复杂度（average case time complexity）和均摊时间复杂度（amortized time complexity）。</p>
+<h3 id="_19">最好、最坏情况时间复杂度<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<div class="code"><pre><span></span><span class="c1">// 在一个无需的数组 array 中查找变量 x 出现的位置，若没有找到则返回 -1</span>
+<span class="c1">// n 表示数组 array 的长度</span>
+<span class="kt">int</span> <span class="nf">find</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">pos</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="code"><pre><span></span><span class="c1">// 更高效的写法：有可能中途找到就可以提前结束循环</span>
+<span class="c1">// n 表示数组 array 的长度</span>
+<span class="kt">int</span> <span class="nf">find</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">pos</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>如果数组中的第一个元素正好是要查找的变量 x，那就不需要继续遍历剩下的 n-1 个数据，则时间复杂度就是 O(1)。</li>
+<li>如果数组中不存在变量 x，那就需要把整个数组都遍历一遍，时间复杂度就成了 O(n)。</li>
+<li>所以，在不同的情况下，这段代码的时间复杂度是不一样的。</li>
+</ul>
+<p>因此，为了表示代码在不同情况下的不同时间复杂度，我们需要引入三个概念：<strong>最好情况时间复杂度、最坏情况时间复杂度和平均情况时间复杂度。</strong></p>
+<ul>
+<li>最好情况时间复杂度：在最理想的情况下，执行这段代码的时间复杂度。</li>
+<li>最坏情况时间复杂度：在最糟糕的情况下，执行这段代码的时间复杂度。</li>
+</ul>
+<h3 id="_20">平均情况时间复杂度<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>通过上述查找变量 x 的例子来解释：要查找的变量 x 在数组中的位置，有 n+1 中情况，<strong>在数组的 0-n-1 位置中和不在数组中。</strong>我们把每种情况下，查找需要遍历的元素个数累加起来，然后再除以 n+1，就可以得到需要遍历的元素个数的平均值，即：<span><span class="MathJax_Preview">(1+2+3+...+n+n)/(n+1)=n(n+3)/2(n+1)</span><script type="math/tex">(1+2+3+...+n+n)/(n+1)=n(n+3)/2(n+1)</script></span>。根据时间复杂度的大 O 表示法，可以省略掉稀疏、低阶和常量， 所以公式简化之后即可得到平均时间复杂度就是 O(n)。</p>
+<p>如果我们把每种情况发生的概率考虑进去，那平均情况时间复杂度的计算：<span><span class="MathJax_Preview">1*(1/2n)+2*(1/2n)+3*(1/2n)+...+n*(1/2n)+n*(1/2)=(3n+1)/4</span><script type="math/tex">1*(1/2n)+2*(1/2n)+3*(1/2n)+...+n*(1/2n)+n*(1/2)=(3n+1)/4</script></span>。这个值就是概率论中的加权平均值，也叫做期望值，所以平均时间复杂度的全称应为加权平均时间复杂度或期望时间复杂度。</p>
+<p>实际上，在大多数情况下，我们并不需要区分最好、最坏、平均情况时间复杂度三种情况。只有在同一块代码在不同的情况下，时间复杂度有量级的差距，我们才会使用这三种时间复杂度表示法来区分。</p>
+<h3 id="_21">均摊时间复杂度<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>均摊时间复杂度的应用场景比平均情况时间复杂度更加特殊，更加有限。为了方便讲解，通过以下一段代码来帮助理解：</p>
+<div class="code"><pre><span></span><span class="c1">// array 表示一个长度为 n 的数组</span>
+<span class="c1">// 代码中的 array.length 就等于 n</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="o">==</span> <span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">array</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">sum</span><span class="p">;</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">array</span><span class="o">[</span><span class="n">count</span><span class="o">]</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+    <span class="o">++</span><span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>代码解释：实现了一个往数组中插入数据的功能。当数组满了之后，也就是戴安中的 <code>count == array.length</code> 时，我们用 for 循环遍历数组求和，并清空数组，将求和之后的 sum 值放到数组的第一个位置，然后再讲新的数据插入。但如果数组一开始就有空间空间，则直接将数据插入数组。</p>
+<ul>
+<li>最理想的情况下，数组中有空闲空间，只需要将数据插入到数组下标为 count 的位置就可以，最好情况时间复杂度为 O(1)。</li>
+<li>最坏的情况下，数组中没有空闲空间了，我们需要先做一次数组的遍历求和，然后再将数据插入，所以最坏情况的时间复杂度为 O(n)。</li>
+<li>平均情况时间复杂度：假设数组长度为 n，根据数据插入的位置不同，我们可以分为 n 中情况，每种情况的时间复杂度是 O(1)。此外，还有一种例外情况，就是在数组没有空闲空间插入一个数组，这时的时间复杂度是 O(n)。并且，这 n+1 种情况发生的概率一样，都是 1/(n+1)。所以根据加权平均的计算方法，求得平均复杂度就是：<span><span class="MathJax_Preview">(1+1+1+...+n)*(1/(n+1))=O(1)</span><script type="math/tex">(1+1+1+...+n)*(1/(n+1))=O(1)</script></span>。</li>
+<li>均摊时间复杂度：每一次 O(n) 的插入操作，都会跟着 n-1 次 O(1) 的插入操作，把耗时多的那次操作均摊到接下来的 n-1 次耗时少的操作上，均摊下来，这一组连续的操作的均摊时间复杂度就是 O(1)。</li>
+</ul>
+<p>均摊时间复杂度和摊还分析的应用场景：对一个数据结构进行一组连续操作中，大部分情况下时间复杂度都很低，只有个别情况下时间复杂度比较高，而且这些操作之间存在前后连贯的时序关系，这个时候，我们就可以将一组操作放在一块儿分析，看是否能将较高时间复杂度那次操作的耗时，平摊到其他那些时间复杂度比较低的操作上。而且，<strong>在能够应用均摊时间复杂度分析的场合，一般均摊时间复杂度就等于最好情况时间复杂度。</strong>均摊时间复杂度就是一种特殊的平均时间复杂度，没必要花太多精力去区分它们。<strong>最应该掌握的是它的分析方法，摊还分析。</strong></p>
+<h3 id="_22">内容小结<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<ul>
+<li>学习复杂度分析相关的几个概念：最好情况时间复杂度、最坏情况时间复杂度、平均情况时间复杂度、均摊时间复杂度。</li>
+<li>最好和最坏情况下的时间复杂度分析起来比较简单，但平均和均摊两个复杂度分析相对比较复杂，需要深入理解并慢慢实践。</li>
+</ul>
+<h3 id="_23">课后思考<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>用今天学到的知识来分析下面这个 add() 函数的时间复杂度。</p>
+<div class="code"><pre><span></span><span class="c1">// 全局变量，大小为 10 的数组 array，长度 len，下标 i</span>
+<span class="kt">int</span> <span class="n">array</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">10</span><span class="o">]</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// 往数组中添加一个元素</span>
+<span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 数组空间不够了</span>
+        <span class="c1">// 重新申请一个 2 倍大小的数组空间</span>
+        <span class="kt">int</span> <span class="n">new_array</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">len</span><span class="o">*</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+        <span class="c1">// 把原来 array 数组中的数据一次 copy 到 new_array</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">new_array</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// new_array 复制给 array，array 现在大小就是 2 倍 len 了</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="n">new_array</span><span class="p">;</span>
+        <span class="n">len</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">len</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// 将 element 放到下标为 i 的位置，下标 i 加一</span>
+    <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">element</span><span class="p">;</span>
+    <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>最好情况时间复杂度 O(1)</li>
+<li>最坏情况时间复杂度 O(len)</li>
+<li>平均情况时间复杂度 O(1)</li>
+<li>均摊时间复杂度 O(1)</li>
+</ul>
+<h2 id="_24">周末福利第一期 | 数据结构与算法学习书单<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20180930170604.png" /></p>
+<h3 id="_25">针对入门的趣味书<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>入门时，建议找一些比较容易看的书来看，比如《大话数据结构》和《算法图解》。不要太在意书写得深浅，重要的是能不能坚持看完。</p>
+<ul>
+<li>《大话数据结构》</li>
+<li>《算法图解》</li>
+</ul>
+<p>这些入门书共同的问题是，缺少细节，不够系统，也不够严谨。所以，如果想要系统地学数据结构和算法，看这两本书肯定是不够的。</p>
+<h3 id="_26">针对特定编程语言的教科书<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>市面上大部分数据结构和算法书籍都是用 C、C++、Java 语言实现的，还有些是用伪代码。使用 Python、Go、PHP、JavaScript、Object-C 等这些编程语言实现的相对较少。</p>
+<p>推荐《数据结构和算法分析》，国外很多大学采用本书作为教材。这本书非常系统、全面、严谨，而且又不是特别难，适合对数据结构和算法有些了解，并且掌握了至少一门编程语言的同学。作者用心的分别采用三种语言写了三个版本，分别是：</p>
+<ul>
+<li>《数据结构与算法分析 ：C 语言描述》</li>
+<li>《数据结构与算法分析：C++ 描述》</li>
+<li>《数据结构与算法分析：Java 语言描述》</li>
+</ul>
+<p>此外，如果你熟悉 Python 或 JavaScript，可以参考《数据结构与算法 JavaScript 描述》和《数据结构与算法：Python 语言描述》。</p>
+<h3 id="_27">面试必刷的宝典<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<ul>
+<li>《剑指 Offer》这本书几乎包含了所有常见的、经典的面试题，如果能搞懂这本书的内容，应付一般公司的面试应该不成问题。</li>
+<li>《编程珠玑》最大的特色是讲了很多针对海量数据的处理技巧，这个可能是其他算法书籍较少涉及到的。不管是开拓眼界，还是应付面试，这本书都很值得一看。</li>
+<li>《编程之美》这本书的多位作者绝大部分都是微软的工程师，但里面的算法题稍微有点难，也不是很系统。适合有一定基础，喜欢钻研写算法问题，或者面试 Google、Facebook 这样的公司，可以拿这本书里的题来自测一下。</li>
+</ul>
+<h3 id="_28">经典大部头<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p>经典大部头都太厚了，看起来比较费劲，估计很少有人能坚持全部看下来。如果想更加深入学习数据结构和算法，还是强烈建议看看。</p>
+<ul>
+<li>《算法导论》这本书的章节安排不是循序渐进的，里面充斥着各种算法的正确性、复杂度的证明、推导，数学公式比较多，一般人看起来比较吃力，不适合作为入门书籍。</li>
+<li>《算法》相对来说友好很多，更容易看懂，更加适合初学者入门。但这本书的缺点就是内容不够全面，如动态规划完全没有涉及，数据结构相关的知识点也讲得不多，基本偏重讲算法。</li>
+</ul>
+<h3 id="_29">殿堂级经典<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<ul>
+<li>《计算机程序设计艺术》这套书的深度、广度、系统性和全面性都是其他所有数据结构和算法书籍无法比拟的。你可以把它当做算法学习的终极挑战。</li>
+</ul>
+<h3 id="_30">闲暇阅读<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<ul>
+<li>《算法帝国》</li>
+<li>《数学之美》</li>
+<li>《算法之美》</li>
+</ul>
+<p>这些书的共同特点是，都列举类大量的例子，非常通俗易懂。当你看这些数的时候，你常常会深深感受到算法的力量，被算法的优美之处折服。</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../zuoer-ting-feng/preface/" title="开篇" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                开篇
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../foundation/" title="基础篇" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                基础篇
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/mengtanx" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/mengtanx" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/in/mengtanx" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

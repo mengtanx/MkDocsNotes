@@ -1,0 +1,1934 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Momenta's Personal Notes">
+      
+      
+        <link rel="canonical" href="https://notes.mengtanx.com/slice/data-structures-and-algorithms/foundation/">
+      
+      
+        <meta name="author" content="Momenta Liu">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>基础篇 - Momenta's Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-121861821-2", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://notes.mengtanx.com/" title="Momenta's Notes" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Momenta's Notes
+            </span>
+            <span class="md-header-nav__topic">
+              
+                基础篇
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://notes.mengtanx.com/" title="Momenta's Notes" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Momenta's Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      技术积淀
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        技术积淀
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../machine/machine-learning/" title="机器学习@周志华" class="md-nav__link">
+      机器学习@周志华
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      深度学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        深度学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep/deep-learning-with-python/" title="深度学习" class="md-nav__link">
+      深度学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep/gluon-tutorial/" title="动手学深度学习" class="md-nav__link">
+      动手学深度学习
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      SQL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        SQL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sql/mysql-learning-notes/" title="MySQL 学习笔记" class="md-nav__link">
+      MySQL 学习笔记
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Spark
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        Spark
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../spark/learning-spark/" title="Spark 快速大数据分析" class="md-nav__link">
+      Spark 快速大数据分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5">
+    
+    <label class="md-nav__link" for="nav-2-5">
+      Java
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-5">
+        Java
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../code/core-java/" title="Java 核心技术 第 10 版笔记" class="md-nav__link">
+      Java 核心技术 第 10 版笔记
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      碎片知识
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        碎片知识
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
+    
+    <label class="md-nav__link" for="nav-3-1">
+      订阅专栏
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        订阅专栏
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-1" type="checkbox" id="nav-3-1-1">
+    
+    <label class="md-nav__link" for="nav-3-1-1">
+      左耳听风
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-1">
+        左耳听风
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../zuoer-ting-feng/preface/" title="开篇" class="md-nav__link">
+      开篇
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-2" type="checkbox" id="nav-3-1-2" checked>
+    
+    <label class="md-nav__link" for="nav-3-1-2">
+      数据结构与算法之美
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-2">
+        数据结构与算法之美
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../intro/" title="入门篇" class="md-nav__link">
+      入门篇
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        基础篇
+      </label>
+    
+    <a href="./" title="基础篇" class="md-nav__link md-nav__link--active">
+      基础篇
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#05-0" class="md-nav__link">
+    05 | 数组：为什么大多数编程语言中的数组要从 0 开始编号？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    如何实现随机访问？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    低效的「插入」和「删除」
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    警惕数组的访问越界问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    容器能否完全替代数组
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    解答开篇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    内容小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    课后思考
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-lru" class="md-nav__link">
+    06 | 链表（上）：如何实现 LRU 缓存淘汰算法？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    五花八门的链表结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    链表 VS 数组性能大比拼
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    解答开篇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    内容小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    课后思考
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    07 | 链表（下）：如何轻松写出正确的链表代码？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    技巧一：理解指针或引用的含义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    技巧二：警惕指针丢失和内存泄露
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    技巧三：利用哨兵简化实现难度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    技巧四：重点留意边界条件处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    技巧五：举例画图，辅助思考
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    技巧六：多写多练，没有捷径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    内容小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    课后思考
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
+    08 | 栈：如何实现浏览器的前进和后退功能？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09" class="md-nav__link">
+    09 | 队列：如何实现线程池等有限资源池的请求派对功能？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    10 | 递归：如何用三行代码实现查找「最终推荐人」功能？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-o-kth" class="md-nav__link">
+    11 | 排序：如何用快排思想 O 时间复杂度查找第 Kth 元素？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-100" class="md-nav__link">
+    12 | 线性排序：如何根据年龄给 100 万用户数据排序？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    13 | 排序优化：如何实现一个通用的高性能的排序函数？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-ip" class="md-nav__link">
+    14 | 二分查找：如何快速定位 IP 对应的省份地址？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-redis" class="md-nav__link">
+    15 | 跳表：为什么  Redis 一定要用跳表实现有序集合？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-word" class="md-nav__link">
+    16 | 散列表（上）：如何实现 Word 文档的单词拼写检查功能？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    17 | 散列表（下）：如何打造一个工业级水平的散列表？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    18 | 哈希算法：如何防止数据库的用户信息被拖库？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    19 | 二叉树：有了如此高效的散列表为什么还要用二叉树？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-top-10" class="md-nav__link">
+    20 | 堆与优先级队列：如何寻找 TOP 10 热门搜索关键词？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    21 | 图的表示：如何存储微博、微信等社交网络中的好友关系？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    22 | 数据结构序列化：如何在数据库中存储一棵多级目录树？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    23 | 深度和广度优先搜索：如何找出社交网络中的三度好友关系？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    24 | 字符串匹配：如何用多模式串匹配实现敏感词过滤功能？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-trie" class="md-nav__link">
+    25 | Trie 树：如何实现搜索引擎的搜索关键词提示功能？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-huffman" class="md-nav__link">
+    26 | 贪心算法：如何用贪心算法实现 Huffman 压缩编码？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-mapreduce" class="md-nav__link">
+    27 | 分治算法：谈一谈大规模计算框架 MapReduce 中的分治思想？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28" class="md-nav__link">
+    28 | 回溯算法：从电影《蝴蝶效应》中学习回溯算法的核心思想
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29" class="md-nav__link">
+    29 | 动态规划（上）：如何巧妙解决双十一购物时的凑单问题？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#30-dp-dp" class="md-nav__link">
+    30 | 动态规划（下）：如何将 DP 状态转移方程转化为 DP 代码？
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../advanced/" title="高级篇" class="md-nav__link">
+      高级篇
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../practice/" title="实战篇" class="md-nav__link">
+      实战篇
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-3" type="checkbox" id="nav-3-1-3">
+    
+    <label class="md-nav__link" for="nav-3-1-3">
+      人工智能基础课
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-3">
+        人工智能基础课
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai-foundation/math-basic/" title="数学基础" class="md-nav__link">
+      数学基础
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-4" type="checkbox" id="nav-3-1-4">
+    
+    <label class="md-nav__link" for="nav-3-1-4">
+      在线教程
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-1-4">
+        在线教程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1-4-1" type="checkbox" id="nav-3-1-4-1">
+    
+    <label class="md-nav__link" for="nav-3-1-4-1">
+      机器学习算法各个击破
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
+      <label class="md-nav__title" for="nav-3-1-4-1">
+        机器学习算法各个击破
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../machine-learning-algorithms/machine-learning-basics/" title="机器学习基础知识" class="md-nav__link">
+      机器学习基础知识
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      数据科学
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        数据科学
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../data/analysis/python-data-science-handbook/" title="Python 数据科学手册" class="md-nav__link">
+      Python 数据科学手册
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../data/analysis/game-data-analysis/" title="游戏数据分析的艺术" class="md-nav__link">
+      游戏数据分析的艺术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../data/analysis/dataization-management/" title="数据化管理" class="md-nav__link">
+      数据化管理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      关于
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        关于
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/release-notes/" title="更新记录" class="md-nav__link">
+      更新记录
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#05-0" class="md-nav__link">
+    05 | 数组：为什么大多数编程语言中的数组要从 0 开始编号？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    如何实现随机访问？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    低效的「插入」和「删除」
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    警惕数组的访问越界问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    容器能否完全替代数组
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    解答开篇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    内容小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    课后思考
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-lru" class="md-nav__link">
+    06 | 链表（上）：如何实现 LRU 缓存淘汰算法？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    五花八门的链表结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    链表 VS 数组性能大比拼
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    解答开篇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    内容小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    课后思考
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    07 | 链表（下）：如何轻松写出正确的链表代码？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    技巧一：理解指针或引用的含义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    技巧二：警惕指针丢失和内存泄露
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    技巧三：利用哨兵简化实现难度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    技巧四：重点留意边界条件处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    技巧五：举例画图，辅助思考
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    技巧六：多写多练，没有捷径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    内容小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    课后思考
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
+    08 | 栈：如何实现浏览器的前进和后退功能？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09" class="md-nav__link">
+    09 | 队列：如何实现线程池等有限资源池的请求派对功能？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    10 | 递归：如何用三行代码实现查找「最终推荐人」功能？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-o-kth" class="md-nav__link">
+    11 | 排序：如何用快排思想 O 时间复杂度查找第 Kth 元素？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-100" class="md-nav__link">
+    12 | 线性排序：如何根据年龄给 100 万用户数据排序？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    13 | 排序优化：如何实现一个通用的高性能的排序函数？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-ip" class="md-nav__link">
+    14 | 二分查找：如何快速定位 IP 对应的省份地址？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-redis" class="md-nav__link">
+    15 | 跳表：为什么  Redis 一定要用跳表实现有序集合？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-word" class="md-nav__link">
+    16 | 散列表（上）：如何实现 Word 文档的单词拼写检查功能？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    17 | 散列表（下）：如何打造一个工业级水平的散列表？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    18 | 哈希算法：如何防止数据库的用户信息被拖库？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    19 | 二叉树：有了如此高效的散列表为什么还要用二叉树？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-top-10" class="md-nav__link">
+    20 | 堆与优先级队列：如何寻找 TOP 10 热门搜索关键词？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    21 | 图的表示：如何存储微博、微信等社交网络中的好友关系？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    22 | 数据结构序列化：如何在数据库中存储一棵多级目录树？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    23 | 深度和广度优先搜索：如何找出社交网络中的三度好友关系？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    24 | 字符串匹配：如何用多模式串匹配实现敏感词过滤功能？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-trie" class="md-nav__link">
+    25 | Trie 树：如何实现搜索引擎的搜索关键词提示功能？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-huffman" class="md-nav__link">
+    26 | 贪心算法：如何用贪心算法实现 Huffman 压缩编码？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-mapreduce" class="md-nav__link">
+    27 | 分治算法：谈一谈大规模计算框架 MapReduce 中的分治思想？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28" class="md-nav__link">
+    28 | 回溯算法：从电影《蝴蝶效应》中学习回溯算法的核心思想
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29" class="md-nav__link">
+    29 | 动态规划（上）：如何巧妙解决双十一购物时的凑单问题？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#30-dp-dp" class="md-nav__link">
+    30 | 动态规划（下）：如何将 DP 状态转移方程转化为 DP 代码？
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">基础篇<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="05-0">05 | 数组：为什么大多数编程语言中的数组要从 0 开始编号？<a class="headerlink" href="#05-0" title="Permanent link">&para;</a></h2>
+<p><img alt="数组" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20181004114134.png" /></p>
+<p>在大部分编程语言中，数组都是从 0 开始编号的。但你出否想过，<strong>为什么数组要从 0 开始编号，而不是从 1 开始呢？</strong>从 1 开始不是更符合人类的思维习惯吗？</p>
+<h3 id="_2">如何实现随机访问？<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>什么是数组？<strong>数组 Array 是一种线性表数据结构。它用一组连续的内存空间，来存储一组具有相同类型的数据。</strong></p>
+<p><img alt="线性表" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20181004114452.png" />
+<img alt="非线性表" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20181004114625.png" /></p>
+<ul>
+<li>线性表 Linear List<ul>
+<li>线性表就是数据排成像一条线一样的结构。每个线性表上的数据最多只有前和后两个方向。</li>
+<li>除数组外，链表、队列和栈等也是线性表结构。</li>
+<li>与其相对的概念是非线性表，如二叉树、堆、图等。非线性表中，数据之间并不是简单的前后关系。</li>
+</ul>
+</li>
+<li>连续的内存空间和相同类型的数据<ul>
+<li>由于这两个限制，数组有了一个「杀手锏」般的特性：随机访问。</li>
+<li>同时，也让数组的很多操作变得非常低效，如在数组中删除、插入一个数据</li>
+<li>数组通过寻址公式计算数组中某个元素存储的内存地址即可实现随机访问数组中某个元素。</li>
+<li>纠正一个「错误」：链表与数组的区别，链表适合插入、删除，时间复杂度为 O(1)；数组适合查找，查找时间复杂度为 O(1)。更准确的表述为，数组支持随机访问，根据下标随机访问的时间复杂度为 O(1)。</li>
+</ul>
+</li>
+</ul>
+<h3 id="_3">低效的「插入」和「删除」<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>数组为了保持内存数据的连续性，会导致插入、删除这两个操作都比较低效。</p>
+<ul>
+<li>插入操作：如果数组中的数据是有序的，可以将插入新元素的时间复杂度降为 O(1)。</li>
+<li>删除操作：和插入类似，删除操作的最好情况时间复杂度为 O(1)，最坏情况时间复杂度为 O(n)，平均情况时间复杂度也为 O(n)。</li>
+</ul>
+<p>在某些特殊场景下，我们并不一定非得追求数组中数据的连续性。我们可以将多次删除操作集中在一起执行，以提高删除的效率。每次的删除操作并不是真正地搬移数据，只是记录数据已经删除。当数组没有更多空间存储数据时，再触发执行一次真正的删除操作，这样就大大减少了删除操作导致的数据搬移。</p>
+<p>数据结构与算法的魅力就在于，<strong>很多时候我们并不是要去死记硬背某个数据结构或者算法，而是要学习它背后的思想和处理技巧，这些东西才是最有价值的。</strong></p>
+<h3 id="_4">警惕数组的访问越界问题<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="code"><pre><span></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[]){</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>由于代码书写错误，导致 for 循环的结束条件错写为了 i&lt;=3 而非 i&lt;3，所以当 i=3 时，数组 a[3] 访问越界。而在 C 语言中，只要不是访问受限的内存，所有的内存空间都是可以自由访问的。根据数组寻址公式，a[3] 也会被定位到某块不属于数组的内存地址上，而这个地址正好是存储变量 i 的内存地址，那么 a[3]=0 就相当于 i=0，所以就会导致代码无限循环。</p>
+<p>数组越界在 C 语言中是一种未决行为，并没有规定数组访问越界时应该如何处理。因为，访问数组的本质就是访问一段连续内存，只要数组通过偏移计算得到的内存地址是可用的，那么程序就可能不会报任何错误。</p>
+<h3 id="_5">容器能否完全替代数组<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>针对数组类型，很多语言提供了容器类，如 Java 中的 ArrayList、C++ STL 中的 vector。<strong>在项目开发中，什么时候适合用数组，什么时候适合用容器呢？</strong></p>
+<p>以 Java 语言来举例，ArrayList 最大的优势就是<strong>可以将很多数组操作的细节封装起来</strong>。如数组插入、删除操作时需要搬移其他数据等。它的另一个优势就是<strong>支持动态扩容</strong>。ArrayList 底层已经实现了扩容逻辑，每当存储空间不够时，它都会将空间自动扩容为 1.5 倍大小。因为扩容曹禺设计内存申请和数据搬移，是比较耗时的。所以如果事先能确定需要存储的数据大小，最好**在创建 ArrayList 的时候实现指定数据大小。</p>
+<p>有些时候，用数组会更合适，有以下几点经验总结：</p>
+<ol>
+<li>Java ArrayList 无法存储基本类型，比如 int、long，需要封装为 Integer、Long 类，而 Autoboxing、Unboxing 则有一定的性能消耗，所以如果特别关注性能，或者希望使用基本类型，就可以选用数组。</li>
+<li>如果数据大小事先已知，并且对数据的操作非常简单，用不到 ArrayList 提供的大部分方法，也可以直接使用数组。</li>
+<li><strong>个人喜好</strong>：当要表示多维数组时，用数组往往会更加直观。如 Object[][] array; 而用容器则定义为 ArrayList<ArrayList>array。</li>
+<li>使用总结<ul>
+<li>对于业务开发，直接使用容器就足够了，省时省力，对系统整体的性能影响非常小。</li>
+<li>如果做一些非常底层的开发，如开发网络框架，性能的优化需要做到极致，这时数组就会优于容器，成为首选。</li>
+</ul>
+</li>
+</ol>
+<h3 id="_6">解答开篇<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>从数组存储的内存模型上来看，「下标」最确切的定义应该是偏移量（）offerset。</p>
+<p>数组时非常基础的数据结构，通过下标随机访问数组元素优势非常基础的编程操作，效率优化就要尽可能做到极致。所以为了减少一次剪发操作，数组选择了从 0 开始编号， 而不是从 1 开始。</p>
+<p>数组起始编号为 0 最主要的原因可能是历史原因。</p>
+<h3 id="_7">内容小结<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>数组用一块连续的内存空间，来存储相同类型的一组数据。</li>
+<li>数组最大的特点是支持随机访问，但插入、删除操作也因此变得比较低效，平均情况时间复杂度为 O(n)。</li>
+<li>在平时的业务开发中，我们可以直接使用编程语言提供的容器类，但是，如果是特别底层的开发，直接使用数组可能会更合适。</li>
+</ul>
+<h3 id="_8">课后思考<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ol>
+<li>如果你理解并熟悉 JVM，可以回顾下你理解的标记清除垃圾回收算法。</li>
+<li>思考并类比一下，二维数组的内存寻址公式是怎样的呢？</li>
+</ol>
+<h2 id="06-lru">06 | 链表（上）：如何实现 LRU 缓存淘汰算法？<a class="headerlink" href="#06-lru" title="Permanent link">&para;</a></h2>
+<p>首先来讨论一个经典的链表应用场景，那就是 LRU 缓存淘汰算法。缓存是一种提高数据读取性能的技术，在硬件设计、软件开发中都有着非常广泛的应用，比如常见的 CPU 缓存、数据库缓存、浏览器缓存等。</p>
+<p>缓存的大小有限，当缓存被用满时，哪些数据应该被清理出去，哪些数据应该被保留？这就需要缓存淘汰策略来决定。常见的策略有三种：先进先出策略 FIFO（First In, First Out）、最少使用策略 LFU（Least Frequently Used）、最近最少使用策略 LRU（Least Recently Used）。</p>
+<h3 id="_9">五花八门的链表结构<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>链表和数组的区别：从底层的存储结构上来看，数组需要一块<strong>连续的内存空间</strong>来存储，堆内存的要求比较高；链表并不需要连续的内存空间，它通过「指针」将一组<strong>零散的内存块</strong>串联起来使用。</p>
+<p><img alt="内存分布" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20181005084647.png" /></p>
+<p>链表结构五花八门，三种常见的链表结构是：单链表、双向链表和循环链表。链表通过指针将一组零散的内存块串联在一起，我们把内存块称为链表的「结点」。为了将所有的结点串起来，每个链表的结点除了存储数据之外，还需要记录链上的下一个结点的地址。我们把这个记录结点地址的指针叫作<strong>后继指针 next</strong>。</p>
+<ul>
+<li>单链表</li>
+</ul>
+<p>单链表中有两个结点是比较特殊的，分别是第一个结点和最后一个结点。习惯性把第一个结点叫作<strong>头结点</strong>，把最后一个结点叫作<strong>尾结点</strong>。其中，头结点用来记录链表的基地址，有了它，我们就可以遍历得到整条链表。而尾结点特殊的地方是：指针不是指向下一个结点，而是指向一个<strong>空地址 NULL</strong>，表示这是链表上最后一个结点。</p>
+<p><img alt="单链表" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20181005092749.png" /></p>
+<p>链表中插入或者删除一个数据，我们并不需要为了保持内存的连续性而搬移结点，因为链表的存储空间本身就不是连续的。所以，在链表中插入和删除一个数据非常快速的。针对链表的插入和删除操作，我们只需要考虑相邻结点的指针改变，所以对应的<strong>时间复杂度是 O(1)</strong>。</p>
+<p><img alt="链表的插入和删除" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20181005085929.png" /></p>
+<p>但是，链表要想随机访问第 k 个元素，就没有数组那么高效了。因为链表中的数据并非连续存储的，需要根据指针一个结点一个结点地依次遍历，直到找到相应的结点。因此，<strong>链表随机访问的时间复杂度是 O(n)</strong>。</p>
+<ul>
+<li>循环链表和双向链表</li>
+</ul>
+<p>循环链表是一种特殊的单链表。它跟单链表唯一的区别就在尾结点。单链表的尾结点指向空地址，表示这就是最后的结点了。而循环链表的尾结点指针是指向链表的头结点。</p>
+<p><img alt="循环链表" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20181005090347.png" /></p>
+<p>循环链表的优点是从链尾到链头比较方便。当要处理的数据具有环形结构特点时，就特别适合采用循环链表。比如<a href="https://zh.wikipedia.org/wiki/%E7%BA%A6%E7%91%9F%E5%A4%AB%E6%96%AF%E9%97%AE%E9%A2%98">著名的约瑟夫问题</a>。</p>
+<ul>
+<li>双向链表</li>
+</ul>
+<p>在实际的软件开发中，更加常用的链表结构是：双向链表。单向链表只有一个方向，结点只有一个后继指针 next 指向后面的结点。而双向链表，支持两个方向，每个结点不止有一个后继指针 next 指向后面的结点，还有一个前驱指针 prev 指向前面的结点。</p>
+<p><img alt="双向链表" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20181005090401.png" /></p>
+<p>双向链表需要额外的两个空间来存储后继节点和前驱结点的地址。所以，存储同样多的数据，双向链表要比单向链表占用更多的内存空间。双向链表的两个指针虽然比较浪费存储空间，但可以支持双向遍历，从而带来了双向链表操作的灵活性。思考一下，双向链表适合解决哪种问题呢？</p>
+<p>从结构上看，双向链表可以支持 O(1) 时间复杂度的情况下找到前驱结点，从而使得双向链表在某些情况下的插入、删除等操作都要比单链表简单、高效。</p>
+<ul>
+<li>删除操作：在实际软件开发中，从链表中删除一个数据无外乎两种情况：<ul>
+<li>删除结点中「值等于某个给定值」的结点；</li>
+<li>删除给定指针指向的结点</li>
+</ul>
+</li>
+</ul>
+<p>对于第一种情况，不管是单向链表还是双向链表，为了查找到值等于给定值的结点，都需要从头结点开始一个一个依次遍历对比，直到找到值等于给定值的结点，然后再通过指针操作将其删除。**尽管单纯的删除操作时间复杂度是 O(1)，但遍历查找的时间是主要的耗时点，对应的时间复杂度为 O(n)。根据时间复杂度分析的加法法则，删除值等于给定值的结点对应的链表操作的总时间复杂度为 O(n)。</p>
+<p>对于第二种情况，我们已经找到了要删除的结点，但是删除某个结点 q 需要知道其前驱结点，而单向链表并不支持直接获取前驱结点，所以还是要从头结点开始遍历链表，而对于双向链表中的结点已经保存了前驱结点的指针，可以直接在 O(1)
+时间复杂度内就获取到前驱结点。</p>
+<ul>
+<li>插入操作：同样地，我们在链表的某个指定结点前插入一个结点，双向链表比单链表有很大的优势。双向链表可以在 O(1) 时间复杂度内搞定，而单向链表需要在 O(n) 时间复杂度内搞定。</li>
+</ul>
+<p>此外，对于一个有序链表，双向链表的按值查询的效率也要比单链表高一些。因为，我们可以及时上次查找的位置 p，每次查询时，根据要查找的值与 p 的大小关系，决定是往前还是往后查找，所以平均只需要查找一半的数据。</p>
+<p>因此，在实际的软件开发中，双向链表尽管比较费内存，但还是比单链表的应用更加广泛的原因。如果你深入研究 Java 语言中的 LinkedHashMap 的实现原理，就会发现其中就用到了双向链表这种数据结构。</p>
+<p>实际上，我们需要掌握一个更加重要的知识点：<strong>空间换时间</strong>的设计思想。当内存空间充足时，为了追求代码的执行速度，我们可以选择空间复杂度相对较高、但时间复杂度相对很低的算法或数据结构。相反，如果内存比较紧缺，比如代码跑在手机或者单片机上时，就要反过来用时间换空间的设计思路。缓存实际上就是利用空间换时间的设计思想。总结来说，对于执行较慢的程序，可以通过消耗更多的内存（空间换时间）来进行优化；而消耗过多内存的程序，可以通过消耗更多的时间（时间换空间）来降低内存的消耗。</p>
+<ul>
+<li>双向循环链表</li>
+</ul>
+<p><img alt="双向循环链表" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20181005100342.png" /></p>
+<h3 id="vs">链表 VS 数组性能大比拼<a class="headerlink" href="#vs" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>时间复杂度</th>
+<th>数组</th>
+<th>链表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>插入、删除</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>随机访问</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<p>对于数组和链表的对比，并不能局限于时间复杂度。在实际软件开发中，不能仅仅利用复杂度分析就决定使用哪个数据结构来存储数据。</p>
+<ul>
+<li>数组简单易用，在实现上使用的是连续的内存空间，可以借助 CPU 的缓存机制，预读数组中的数据，所以访问效率更高。</li>
+<li>链表在内存中并不是连续存储的，所以对 CPU 缓存不友好，没办法有效预读。</li>
+<li>数组的缺点是大小固定，声明后就要占用整块连续内存空间。若声明的数组过大的，系统可能没有足够的连续内存空间分配导致内存不足（OOM）。</li>
+<li>若声明的数组过小，则可能出现不够用的情况，这是需要再申请一个更大的内存空间，然后把原数组拷贝进去，非常费时。链表本身没有大小的限制，天然地支持动态扩容，这是与数组最大的区别。</li>
+<li>此外，如果对代码内存的使用非常苛刻，那数组更加适合你。因为链表中的每个结点都需要消耗额外的存储空间去存储一份指向下一个结点的指针，所以内存消耗会翻倍。并且对链表进行频繁的插入、删除操作，还会导致频繁的内存申请和释放，容易造成内存碎片，对 Java 语言来说就有可能导致频繁的 GC。</li>
+</ul>
+<h3 id="_10">解答开篇<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>如何基于链表实现 LRU 缓存淘汰算法？</p>
+<p>思路如下：我们维护一个有序单链表，越靠近链表尾部的结点是越早之前访问的。当有一个新的数据被访问时，我们从链表头开始顺序遍历链表。</p>
+<ol>
+<li>如果此数据之前已经被缓存在链表中了，我们遍历得到这个数据对应的结点，并将原来的位置删除，然后再插入到链表的头部。</li>
+<li>如果此数据没有在缓存链表中，又可以分为两种情况：<ul>
+<li>如果此时缓存未满，则将此结点直接插入到链表的头部；</li>
+<li>如果此时缓存已满，则将链表尾结点删除，将新的数据结点插入链表的头部。</li>
+</ul>
+</li>
+</ol>
+<p>基于链表实现缓存的思路，缓存访问的时间复杂度为 O(n)。实际上，我们可以引入散列表（Hash Table）来记录每个数据的位置，将缓存访问的时间复杂度降到 O(1)。此外，也可以用数组来实现 LRU 缓存淘汰策略，思考一下该如何利用数组实现呢？</p>
+<h3 id="_11">内容小结<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>链表也是一种非常基础和常用的数据结构。</li>
+<li>常用的链表包括单链表、双向链表、循环链表、双向循环链表。</li>
+<li>链表更适合插入、删除操作频繁的场景，其查询的时间复杂度较高。</li>
+<li>在具体的软件开发中，需要综合对比数组和链表的各种性能来选择。</li>
+</ul>
+<h3 id="_12">课后思考<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<ul>
+<li>原始问题：如何判断一个字符串是否是回文字符串的问题？</li>
+<li>衍生问题：如果字符串时通过单链表存储的，那该如何判断是一个回文串呢？分享一下你的解决思路及其时间和空间复杂度。</li>
+</ul>
+<h2 id="07">07 | 链表（下）：如何轻松写出正确的链表代码？<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<p>想要写好链表代码并不是容易的事儿，尤其是那些复杂的链表操作，比如链表翻转、有序链表合并等，写的时候非常容易出错，能把「链表翻转」这几行代码写对的人不足 10%。只要愿意投入时间，大多数人是可以写出正确的链表代码的。<strong>比如，花上一个周末或者一整天的时间，就去写链表翻转一个代码，多谢几遍，一直练到毫不费力地写出 Bug Free 的代码。</strong></p>
+<p>自己有决心并且付出精力是成功的先决条件。此外，我们也需要掌握一些方法和技巧，具体如下：</p>
+<h3 id="_13">技巧一：理解指针或引用的含义<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>要想写对链表代码，首先要理解好指针。</p>
+<p>我们知道，有些语言有「指针」的概念，如 C 语言；有些语言没有指针，取而代之的是引用，如 Java、Python。不管是指针还是引用，实际上，它们的意思都是一样的，都是存储所指对象的内存地址。</p>
+<p>实际上，对指针的理解，只需要记住下面这句话就可以了。<strong>将某个变量赋值给指针，实际上就是将这个变量的地址赋值给指针，或者反过来说，指针中存储了这个变量的内存地址，指向了这个变量，通过指针就能找到这个变量。</strong></p>
+<p>代码 <code>p-&gt;next=q</code> 说明 p 结点中的 next 指针存储了 q 结点的内存地址。代码 <code>p-&gt;next=p-&gt;next-&gt;next</code> 表示 p 结点的 next 指针存储了 p 结点的下下一个结点的内存地址。<strong>只要掌握了指针或引用的概念，就应该可以很轻松地看懂链表代码。</strong></p>
+<h3 id="_14">技巧二：警惕指针丢失和内存泄露<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li>在写链表代码的时候，一定注意不要弄丢了指针。</li>
+<li>对于有些语言来说，如 C 语言，内存管理是由程序员负责的，如果没有手动释放结点对应的内存空间，就会产生内存泄露。所以，在插入结点时，一定要注意操作的顺序。</li>
+<li>同理，<strong>删除链表结点时，也一定要记得手动释放内存空间。否则也会出现内存泄露问题。</strong></li>
+</ul>
+<h3 id="_15">技巧三：利用哨兵简化实现难度<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>针对链表的插入、删除操作，需要对插入第一个结点和删除最后一个结点的情况进行特殊处理。这样代码实现起来就会很繁琐，不简洁，而且也容易因为考虑不全而出错。<strong>我们可以利用「哨兵」来解决链表的边界问题，不直接参与业务逻辑。</strong></p>
+<p>如果我们引入哨兵结点，在任何时候，不管链表是不是空，head 指针都会一直指向这个哨兵结点。这种带有哨兵结点的链表叫<strong>带头链表</strong>，相反，没有哨兵结点的链表就叫作<strong>不带头链表</strong>。</p>
+<p><img alt="带头链表" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20181007162011.png" /></p>
+<p>实际上，在很多代码实现中都有用到利用哨兵来简化编程难度的技巧，如插入排序、归并排序、动态规划等。接下来再举一个非常简单的例子：</p>
+<div class="code"><pre><span></span><span class="c1">// 代码一</span>
+<span class="kt">int</span> <span class="nf">find</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">char</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="code"><pre><span></span><span class="c1">// 代码二</span>
+<span class="kt">int</span> <span class="nf">find</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">char</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>对比以上两段代码，在字符串 a 很长的时候，比如几万、几十万，哪段代码运行得更快点呢？答案是代码二，我们通过一个哨兵 <code>a[n-1]=key</code> 成功省掉了一个比较语句 <code>i&lt;n</code>，不要小看这一条语句，当累积执行上万次、几十万次时，累积的时间就很明显了。<strong>当然，大多数情况下，我们并不需要如此追求极致的性能，而牺牲代码的可读性。（代码二的可读性太差，不推荐）</strong></p>
+<h3 id="_16">技巧四：重点留意边界条件处理<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>要实现没有 Bug 的链表代码，一定要在编写的过程中以及编写完成之后，检查边界条件是否考虑全面，以及代码在边界条件下是否能正确运行。常用来检查链表代码是否正确的边界条件有如下几个：</p>
+<ul>
+<li>如果链表为空时，代码是否能正常工作？</li>
+<li>如果链表只包含一个结点时，代码是否能正常工作？</li>
+<li>如果链表只包含两个结点时，代码是否能正常工作？</li>
+<li>代码逻辑再处理头结点和尾结点的时候，是否能正常工作？</li>
+<li>......</li>
+</ul>
+<p>当然，边界条件不止以上列举的这些。针对不同的场景，可能还有特定的边界条件，这需要针对实际情况具体分析。</p>
+<h3 id="_17">技巧五：举例画图，辅助思考<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>找一个具体的例子，把它画在纸上，释放一些脑容量，留更多的空间给逻辑思考，这样就会感觉到思路清晰很多。</p>
+<p>比如往单链表中插入一个数据的操作，可以把各种情况都举一个例子，画出插入前和插入后的链表变化，如图所示。</p>
+<p><img alt="写链表代码举例画图法" src="http://pbw9sjeuq.bkt.clouddn.com/PicGo/20181007160844.png" /></p>
+<p>此外，当我们写完代码之后，也可以举几个例子，画在纸上，照着代码走一遍，很容易就能发现代码中的 Bug。</p>
+<h3 id="_18">技巧六：多写多练，没有捷径<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>即使已经理解并掌握了上述五个技巧，但是手写链表代码还是会出现各种各样的错误，也不要着急，这种状况会持续一段时间。需要坚持，耐心的把常见的链表操作都自己从头多谢几遍，出问题就一点一点调试，孰能生巧。<strong>无他，唯手熟尔！</strong></p>
+<ul>
+<li>单链表翻转</li>
+<li>链表中环的检测</li>
+<li>两个有序的链表合并</li>
+<li>删除链表倒数第 n 个结点</li>
+<li>求链表的中间结点</li>
+</ul>
+<h3 id="_19">内容小结<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<ul>
+<li>分享写出正确链表代码的六个技巧<ul>
+<li>理解指针或引用的含义</li>
+<li>警惕指针丢失和内存泄露</li>
+<li>利用哨兵简化实现难度</li>
+<li>重点留意边界条件处理</li>
+<li>举例画图，辅助思考</li>
+<li>多写多练，没有捷径</li>
+</ul>
+</li>
+<li>写链表代码是最考验逻辑思维能力的。<ul>
+<li>链表代码到处都是指针的操作、边界条件的处理，非常容易产生 Bug</li>
+<li>链表代码写得好坏，课程看出一个人写代码是否足够细心，考虑问题是否全面，思维是否缜密</li>
+<li>手写链表代码是面试官非常喜欢靠的代码题。</li>
+</ul>
+</li>
+</ul>
+<h3 id="_20">课后思考<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>你是否还能想到其他场景，利用哨兵可以大大地简化编码难度？</p>
+<h2 id="08">08 | 栈：如何实现浏览器的前进和后退功能？<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
+<h2 id="09">09 | 队列：如何实现线程池等有限资源池的请求派对功能？<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
+<h2 id="10">10 | 递归：如何用三行代码实现查找「最终推荐人」功能？<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<h2 id="11-o-kth">11 | 排序：如何用快排思想 O 时间复杂度查找第 Kth 元素？<a class="headerlink" href="#11-o-kth" title="Permanent link">&para;</a></h2>
+<h2 id="12-100">12 | 线性排序：如何根据年龄给 100 万用户数据排序？<a class="headerlink" href="#12-100" title="Permanent link">&para;</a></h2>
+<h2 id="13">13 | 排序优化：如何实现一个通用的高性能的排序函数？<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<h2 id="14-ip">14 | 二分查找：如何快速定位 IP 对应的省份地址？<a class="headerlink" href="#14-ip" title="Permanent link">&para;</a></h2>
+<h2 id="15-redis">15 | 跳表：为什么  Redis 一定要用跳表实现有序集合？<a class="headerlink" href="#15-redis" title="Permanent link">&para;</a></h2>
+<h2 id="16-word">16 | 散列表（上）：如何实现 Word 文档的单词拼写检查功能？<a class="headerlink" href="#16-word" title="Permanent link">&para;</a></h2>
+<h2 id="17">17 | 散列表（下）：如何打造一个工业级水平的散列表？<a class="headerlink" href="#17" title="Permanent link">&para;</a></h2>
+<h2 id="18">18 | 哈希算法：如何防止数据库的用户信息被拖库？<a class="headerlink" href="#18" title="Permanent link">&para;</a></h2>
+<h2 id="19">19 | 二叉树：有了如此高效的散列表为什么还要用二叉树？<a class="headerlink" href="#19" title="Permanent link">&para;</a></h2>
+<h2 id="20-top-10">20 | 堆与优先级队列：如何寻找 TOP 10 热门搜索关键词？<a class="headerlink" href="#20-top-10" title="Permanent link">&para;</a></h2>
+<h2 id="21">21 | 图的表示：如何存储微博、微信等社交网络中的好友关系？<a class="headerlink" href="#21" title="Permanent link">&para;</a></h2>
+<h2 id="22">22 | 数据结构序列化：如何在数据库中存储一棵多级目录树？<a class="headerlink" href="#22" title="Permanent link">&para;</a></h2>
+<h2 id="23">23 | 深度和广度优先搜索：如何找出社交网络中的三度好友关系？<a class="headerlink" href="#23" title="Permanent link">&para;</a></h2>
+<h2 id="24">24 | 字符串匹配：如何用多模式串匹配实现敏感词过滤功能？<a class="headerlink" href="#24" title="Permanent link">&para;</a></h2>
+<h2 id="25-trie">25 | Trie 树：如何实现搜索引擎的搜索关键词提示功能？<a class="headerlink" href="#25-trie" title="Permanent link">&para;</a></h2>
+<h2 id="26-huffman">26 | 贪心算法：如何用贪心算法实现 Huffman 压缩编码？<a class="headerlink" href="#26-huffman" title="Permanent link">&para;</a></h2>
+<h2 id="27-mapreduce">27 | 分治算法：谈一谈大规模计算框架 MapReduce 中的分治思想？<a class="headerlink" href="#27-mapreduce" title="Permanent link">&para;</a></h2>
+<h2 id="28">28 | 回溯算法：从电影《蝴蝶效应》中学习回溯算法的核心思想<a class="headerlink" href="#28" title="Permanent link">&para;</a></h2>
+<h2 id="29">29 | 动态规划（上）：如何巧妙解决双十一购物时的凑单问题？<a class="headerlink" href="#29" title="Permanent link">&para;</a></h2>
+<h2 id="30-dp-dp">30 | 动态规划（下）：如何将 DP 状态转移方程转化为 DP 代码？<a class="headerlink" href="#30-dp-dp" title="Permanent link">&para;</a></h2>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../intro/" title="入门篇" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                入门篇
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../advanced/" title="高级篇" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                高级篇
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/mengtanx" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/mengtanx" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/in/mengtanx" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
